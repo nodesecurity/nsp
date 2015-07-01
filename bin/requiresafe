@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+var Chalk = require('chalk');
+var CLI = require('../lib/cli');
+
+
+// Run the library
+CLI.run(function (err, response, code) {
+
+    if (err) {
+        console.error(Chalk.red('>> ') + 'ERROR:', err.message);
+        process.exit(1);
+    }
+
+    console.log(response);
+    process.exit(code);
+});
