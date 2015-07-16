@@ -18,9 +18,8 @@ describe('CLI', function () {
 
     it('returns help when run with no args', function (done) {
 
-        CLI.run(function (err, response) {
+        CLI.run().then(function (response) {
 
-            expect(err).to.not.exist();
             expect(response).to.deep.equal(fullHelp);
             done();
         });
@@ -28,9 +27,8 @@ describe('CLI', function () {
 
     it('returns help when run with an invalid command', function (done) {
 
-        CLI.run({ _: ['broken'] }, function (err, response) {
+        CLI.run({ _: ['broken'] }).then(function (response) {
 
-            expect(err).to.not.exist();
             expect(response).to.deep.equal(fullHelp);
             done();
         });
@@ -38,21 +36,10 @@ describe('CLI', function () {
 
     it('returns help when run with the "help" command', function (done) {
 
-        CLI.run({ _: ['help'] }, function (err, response) {
+        CLI.run({ _: ['help'] }).then(function (response) {
 
-            expect(err).to.not.exist();
             expect(response).to.deep.equal(fullHelp);
             done();
         });
     });
-
-    // it('checks runs the "check"', { timeout: 10000 }, function (done) {
-
-    //     CLI.run({ _: ['check'] }, function (err, response) {
-
-    //         expect(err).to.not.exist();
-    //         expect(response).to.deep.equal('something');
-    //         done();
-    //     });
-    // });
 });
