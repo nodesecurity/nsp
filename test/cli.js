@@ -6,7 +6,10 @@ var expect = require('code').expect;
 var Chalk = require('chalk');
 var CLI = require('../lib/cli');
 var Commands = require('../lib/commands');
-var fullHelp = Object.keys(Commands).map(function (command) {
+var Pkg = require('../package.json');
+
+var header = Chalk.bold('requireSafe(+)') + ' v' + Pkg.version + '\n\n';
+var fullHelp = header + Object.keys(Commands).map(function (command) {
 
     return [
         '  ' + Chalk.bold(command),
