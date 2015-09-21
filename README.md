@@ -19,6 +19,51 @@ To find out more, and to register for requiresafe, go to:
 * To install the requireSafe command line tool: `npm install -g requiresafe`
 * Then run `requiresafe help` to find out more.
 
+## Code Climate requiresafe Engine
+
+`codeclimate-requiresafe` is a Code Climate engine that wraps the requiresafe CLI. You can run it on your command line using the Code Climate CLI, or on our hosted analysis platform.
+
+Note that this engine *only* works if your code either has your `node_modules` directory or an `npm-shrinkwrap.json` file committed.
+
+### Testing
+
+First, build this repo with docker
+
+```
+git clone git@github.com:requiresafe/codeclimate-requiresafe
+cd codeclimate-requiresafe
+docker build -t codeclimate/codeclimate-requiresafe .
+```
+
+Install the codeclimate CLI
+
+```
+brew tap codeclimate/formulae
+brew install codeclimate
+```
+
+Go into your project's directory and enable codeclimate
+
+```
+codeclimate init
+```
+
+Then edit `.codeclimate.yml` to add the engine like so
+
+```yaml
+---
+engines:
+  requiresafe:
+    enabled: true
+exclude_paths: []
+```
+
+And finally run it
+
+```
+codeclimate analyze --dev
+```
+
 ## Contact
 
 requireSafe is brought to you by [^lift security](https://liftsecurity.io).
