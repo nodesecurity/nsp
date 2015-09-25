@@ -7,16 +7,16 @@
     "requiresafe": "bin/requiresafe"
   },
   "dependencies": {
-    "chalk": "^1.0.0",
-    "es6-promise": "^2.3.0",
+    "chalk": "^1.1.1",
+    "es6-promise": "^3.0.2",
     "find-root": "^0.1.1",
-    "inquirer": "^0.8.0",
+    "inquirer": "^0.10.0",
     "is-email": "^0.1.1",
-    "jsonwebtoken": "^5.0.2",
-    "minimist": "^1.1.1",
-    "rc": "^1.0.0",
+    "jsonwebtoken": "^5.0.5",
+    "minimist": "^1.2.0",
+    "rc": "^1.1.1",
     "requiresafe-sdk": "^3.0.0",
-    "semver": "^4.3.6"
+    "semver": "^5.0.3"
   },
   "devDependencies": {
     "@liftsecurity/pre-commit": "^1.0.1",
