@@ -20,8 +20,8 @@
   },
   "devDependencies": {
     "@liftsecurity/pre-commit": "^1.0.1",
-    "code": "^1.2.1",
-    "lab": "^5.2.0",
+    "code": "^1.5.0",
+    "lab": "^6.1.0",
     "shrinkydink": "^1.0.0"
   },
   "keywords": [
@@ -30,6 +30,10 @@
   ],
   "license": "MIT",
   "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/requiresafe/cli.git"
+  },
   "scripts": {
     "configure-local": "node -e \"var uc = require('./lib/update-config'); uc('local', true, process.exit)\"",
     "setup-offline": "curl -sS https://api.requiresafe.com/api/v1/advisories -o advisories.json",
