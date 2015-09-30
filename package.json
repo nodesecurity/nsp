@@ -10,6 +10,7 @@
     "chalk": "^1.1.1",
     "es6-promise": "^3.0.2",
     "find-root": "^0.1.1",
+    "git-validate": "^2.1.0",
     "inquirer": "^0.10.0",
     "is-email": "^0.1.1",
     "jsonwebtoken": "^5.0.5",
@@ -19,7 +20,6 @@
     "semver": "^5.0.3"
   },
   "devDependencies": {
-    "@liftsecurity/pre-commit": "^1.0.1",
     "code": "^1.5.0",
     "lab": "^6.1.0",
     "shrinkydink": "^1.0.0"
@@ -39,5 +39,6 @@
     "setup-offline": "curl -sS https://api.requiresafe.com/api/v1/advisories -o advisories.json",
     "test": "lab -a code -L",
     "shrinkwrap": "npm shrinkwrap && shrinkydink"
-  }
+  },
+  "pre-commit": ["test"]
 }
