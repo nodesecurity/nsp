@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 'use strict';
 
-const subcommand = require('subcommand');
-const usage = require('../lib/usage.js')('root.txt');
+var subcommand = require('subcommand');
+var usage = require('../lib/usage.js')('root.txt');
 
-const config = {
+var config = {
   root: require('../lib/commands/root.js'),
   commands: [
     require('../lib/commands/check.js')
