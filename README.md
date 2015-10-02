@@ -10,22 +10,16 @@ requireSafe helps you keep your node applications secure. With requireSafe you c
 * Make use of the CLI tool to help identify known vulnerabilities in your own projects.
 * Get access to Node Security news and information from the ^lift team.
 
-## Registering
-
-To find out more, and to register for requiresafe, go to:
-
-[https://requiresafe.com](https://requiresafe.com).
-
 ## Installing the CLI
 
 * To install the requireSafe command line tool: `npm install -g requiresafe`
-* Then run `requiresafe help` to find out more.
+* Then run `requiresafe --help` to find out more.
 
 ## Code Climate requiresafe Engine
 
 `codeclimate-requiresafe` is a Code Climate engine that wraps the requiresafe CLI. You can run it on your command line using the Code Climate CLI, or on our hosted analysis platform.
 
-Note that this engine *only* works if your code either has your `node_modules` directory or an `npm-shrinkwrap.json` file committed.
+Note that this engine *only* works if your code has a `npm-shrinkwrap.json` file committed.
 
 ### Testing
 
@@ -68,4 +62,4 @@ codeclimate analyze --dev
 
 ## Contact
 
-requireSafe is brought to you by [^lift security](https://liftsecurity.io).
+requireSafe (+) is brought to you by [^lift security](https://liftsecurity.io).
