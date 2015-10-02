@@ -10,6 +10,7 @@ Parameters
         default
         json
         codeclimate
+        none (does what you think it does)
 
   --offline: optional
 
