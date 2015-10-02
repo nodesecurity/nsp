@@ -2,6 +2,7 @@
 'use strict';
 
 var subcommand = require('subcommand');
+var usage = require('../lib/usage.js')('root.txt');
 
 var config = {
   root: require('../lib/commands/root.js'),
@@ -10,7 +11,8 @@ var config = {
   ],
   defaults: require('../lib/commands/defaults.js'),
   none: function (args) {
-    //usage
+
+    usage();
     process.exit(1);
   }
 };
