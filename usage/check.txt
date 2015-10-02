@@ -6,7 +6,10 @@ Parameters
 
   --output-format (-o): optional
 
-    valid values are default, codeclimate
+    valid values are:
+        default
+        json
+        codeclimate
 
   --offline: optional
 
