@@ -17,7 +17,8 @@
     "minimist": "^1.2.0",
     "rc": "^1.1.1",
     "requiresafe-sdk": "^3.0.0",
-    "semver": "^5.0.3"
+    "semver": "^5.0.3",
+    "subcommand": "^2.0.3"
   },
   "devDependencies": {
     "code": "^1.5.0",
@@ -40,5 +41,7 @@
     "test": "lab -a code -L",
     "shrinkwrap": "npm shrinkwrap && shrinkydink"
   },
-  "pre-commit": ["test"]
+  "pre-commit": [
+    "test"
+  ]
 }

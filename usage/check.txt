@@ -1,0 +1,13 @@
+requiresafe check
+
+  checks a package.json / npm-shirkwrap.json for known vulnerabilities against the requireSafe API.
+
+Parameters
+
+  --output-format (-o): optional
+
+    valid values are default, codeclimate
+
+  --offline: optional
+
+    when network is unavailable you can use this (but it won't have as many results as the online version)
