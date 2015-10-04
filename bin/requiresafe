@@ -2,7 +2,7 @@
 'use strict';
 
 var subcommand = require('subcommand');
-var usage = require('../lib/usage.js')('root.txt');
+var usage = require('../lib/utils/usage.js')('root.txt');
 
 var config = {
   root: require('../lib/commands/root.js'),
