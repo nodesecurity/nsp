@@ -13,6 +13,9 @@
     "abbrev": {
       "version": "1.0.7"
     },
+    "agent-base": {
+      "version": "2.0.1"
+    },
     "amdefine": {
       "version": "1.0.0"
     },
@@ -351,6 +354,9 @@
     },
     "http-signature": {
       "version": "0.11.0"
+    },
+    "https-proxy-agent": {
+      "version": "1.0.0"
     },
     "inflight": {
       "version": "1.0.4"
