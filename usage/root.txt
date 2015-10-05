@@ -1,0 +1,10 @@
+usage: requiresafe <command(s)> [--flag] [--key=value]
+
+    check       checks your package.json / npm-shrinkwrap.json for known vulnerabilities
+
+type `requiresafe <command> --help` to view specific command help
+
+
+  --version
+
+    Print the requiresafe version

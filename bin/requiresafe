@@ -18,24 +18,21 @@
 
 'use strict';
 
-var Chalk = require('chalk');
-var CLI = require('../lib/cli');
+var subcommand = require('subcommand');
+var usage = require('../lib/utils/usage.js')('root.txt');
 
+var config = {
+  root: require('../lib/commands/root.js'),
+  commands: [
+    require('../lib/commands/check.js')
+  ],
+  defaults: require('../lib/commands/defaults.js'),
+  none: function (args) {
 
-// Run the library
-CLI.run().then(function (response) {
-
-    var code = 0;
-
-    if (Array.isArray(response)) {
-        code = response[1];
-        response = response[0];
-    }
-
-    console.log(response);
-    process.exit(code);
-}).catch(function (err) {
-
-    console.error(Chalk.red('>> ') + 'ERROR:', err.data ? err.data.message : err.message);
+    usage();
     process.exit(1);
-});
+  }
+};
+
+var route = subcommand(config);
+route(process.argv.slice(2));
