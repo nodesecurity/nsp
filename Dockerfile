@@ -9,4 +9,4 @@ RUN apk --update add nodejs curl && \
     npm install && \
     npm run setup-offline
 
-CMD ["/app/bin/requiresafe", "check", "--codeclimate"]
+CMD ["/app/bin/requiresafe", "check", "--offline", "-o", "codeclimate"]
