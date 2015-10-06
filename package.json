@@ -10,7 +10,6 @@
     "@requiresafe/npm-utils": "^2.5.3",
     "chalk": "^1.1.1",
     "cli-table": "^0.3.1",
-    "git-validate": "^2.1.0",
     "https-proxy-agent": "^1.0.0",
     "joi": "^6.8.1",
     "rc": "^1.1.2",
@@ -21,6 +20,7 @@
   "devDependencies": {
     "code": "^1.5.0",
     "lab": "^6.1.0",
+    "git-validate": "^2.1.0",
     "shrinkydink": "^1.0.0"
   },
   "keywords": [
