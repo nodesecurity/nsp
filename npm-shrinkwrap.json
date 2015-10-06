@@ -302,9 +302,6 @@
     "get-stdin": {
       "version": "3.0.2"
     },
-    "git-validate": {
-      "version": "2.1.0"
-    },
     "glob": {
       "version": "5.0.15"
     },
