@@ -12,6 +12,7 @@
     "cli-table": "^0.3.1",
     "https-proxy-agent": "^1.0.0",
     "joi": "^6.8.1",
+    "nock": "^2.15.0",
     "rc": "^1.1.2",
     "semver": "^5.0.3",
     "subcommand": "^2.0.3",
@@ -19,8 +20,9 @@
   },
   "devDependencies": {
     "code": "^1.5.0",
-    "lab": "^6.1.0",
     "git-validate": "^2.1.0",
+    "lab": "^6.1.0",
+    "nock": "^2.15.0",
     "shrinkydink": "^1.0.0"
   },
   "keywords": [
