@@ -15,17 +15,17 @@ describe('check', function () {
 
     Check({ package: '../package.json', shrinkwrap: '../npm-shrinkwrap.json', offline: true }, function (err) {
 
-      expect(err).to.equal('Offline mode requires a local advisories.json');
+      expect(err.message).to.equal('Offline mode requires a local advisories.json');
+      done();
     });
-    done();
   });
 
   it('Responds correctly when offline and can\'t find a npm-shrinkwrap.json', function (done) {
 
     Check({ package: '../package.json', shrinkwrap: './npm-shrinkwrap.json', offline: true }, function (err) {
 
-      expect(err).to.equal('npm-shrinkwrap.json is required for offline mode');
+      expect(err.message).to.equal('npm-shrinkwrap.json is required for offline mode');
+      done();
     });
-    done();
   });
 });
