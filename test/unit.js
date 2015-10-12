@@ -12,6 +12,12 @@ var expect = Code.expect;
 
 describe('check', function () {
 
+  lab.beforeEach(function (done) {
+
+    Nock('https://api.requiresafe.com').post('/check').reply(404);
+    done();
+  });
+
   it('Responds correctly when package.json can\'t be found', function (done) {
 
     Check({ package: './package.json' }, function (err) {
@@ -48,6 +54,24 @@ describe('check', function () {
     Check({ package: '../package.json', shrinkwrap: './npm-shrinkwrap.json' }, function (err) {
 
       expect(err.message).to.equal('Got an invalid response from requireSafe, please email the above debug output to support@requiresafe.com');
+      done();
+    });
+  });
+
+  it('Responds correctly to package being undefined', { timeout: 10000 }, function (done) {
+
+    Check({ package: undefined, shrinkwrap: './npm-shrinkwrap.json' }, function (err) {
+
+      expect(err.message).to.equal('package.json is required');
+      done();
+    });
+  });
+
+  it('Responds correctly to both package and shrinkwrap being undefined', { timeout: 10000 }, function (done) {
+
+    Check({ package: undefined, shrinkwrap: undefined }, function (err) {
+
+      expect(err.message).to.equal('"value" must contain at least one of [package, shrinkwrap]');
       done();
     });
   });
