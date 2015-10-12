@@ -12,7 +12,6 @@
     "cli-table": "^0.3.1",
     "https-proxy-agent": "^1.0.0",
     "joi": "^6.8.1",
-    "nock": "^2.15.0",
     "rc": "^1.1.2",
     "semver": "^5.0.3",
     "subcommand": "^2.0.3",
