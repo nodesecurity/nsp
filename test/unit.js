@@ -109,11 +109,7 @@ describe('check', function () {
   it('responds correctly to a misc error', function (done) {
 
     Nock('https://api.requiresafe.com')
-      .post('/check', JSON.stringify({
-        package: require(workingOptions.package),
-        shrinkwrap: require(workingOptions.shrinkwrap),
-        exceptions: []
-      }))
+      .post('/check')
       .replyWithError('Error: Client request error: connect ECONNREFUSED https://api.requiresafe.com');
 
     Check(workingOptions, function (err, results) {
@@ -122,10 +118,9 @@ describe('check', function () {
       expect(err.output.payload.message).to.equal('Error: Client request error: connect ECONNREFUSED https://api.requiresafe.com');
       done();
     });
-
   });
 
-  it('responds correctly to exceptions', function (done) {
+  it('sends exceptions', function (done) {
 
     var exceptions = ['https://requiresafe.com/advisories/39'];
 
@@ -137,12 +132,21 @@ describe('check', function () {
       }))
       .reply(200, findings);
 
-    Check({ package: workingOptions.package, shrinkwrap: workingOptions.shrinkwrap, exceptions: exceptions }, function (err, results) {
+    Check(Object.assign(workingOptions, { exceptions: exceptions }), function (err, results) {
 
       expect(err).to.not.exist();
       expect(results).to.exist();
       done();
     });
+  });
 
+  it('works offline', function (done) {
+
+    Check(Object.assign(workingOptions, { advisoriesPath: '../test/data/advisories', offline: true }), function (err, results) {
+
+      expect(err).to.not.exist();
+      expect(results).to.exist();
+      done();
+    });
   });
 });

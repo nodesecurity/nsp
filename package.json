@@ -37,7 +37,7 @@
   "scripts": {
     "configure-local": "node -e \"var uc = require('./lib/update-config'); uc('local', true, process.exit)\"",
     "setup-offline": "curl -sS https://api.requiresafe.com/advisories -o advisories.json",
-    "test": "lab -a code -L",
+    "test": "lab -a code -L -t 100",
     "shrinkwrap": "npm shrinkwrap && shrinkydink"
   },
   "pre-commit": [
