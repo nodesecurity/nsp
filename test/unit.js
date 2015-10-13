@@ -16,6 +16,8 @@ var workingOptions = {
   shrinkwrap: Path.resolve(__dirname, './data/npm-shrinkwrap.json')
 };
 
+var findings = require('./data/findings.json');
+
 describe('check', function () {
 
   it('Responds correctly when package.json can\'t be found', function (done) {
@@ -92,7 +94,6 @@ describe('check', function () {
 
   it('Responds correctly to receiving a 200 and findings', function (done) {
 
-    var findings = require('./data/findings.json');
     Nock('https://api.requiresafe.com')
       .post('/check')
       .reply(200, findings);
@@ -108,13 +109,38 @@ describe('check', function () {
   it('responds correctly to a misc error', function (done) {
 
     Nock('https://api.requiresafe.com')
-      .post('/check')
+      .post('/check', JSON.stringify({
+        package: require(workingOptions.package),
+        shrinkwrap: require(workingOptions.shrinkwrap),
+        exceptions: []
+      }))
       .replyWithError('Error: Client request error: connect ECONNREFUSED https://api.requiresafe.com');
 
     Check(workingOptions, function (err, results) {
 
       expect(err).to.exist();
       expect(err.output.payload.message).to.equal('Error: Client request error: connect ECONNREFUSED https://api.requiresafe.com');
+      done();
+    });
+
+  });
+
+  it('responds correctly to exceptions', function (done) {
+
+    var exceptions = ['https://requiresafe.com/advisories/39'];
+
+    Nock('https://api.requiresafe.com')
+      .post('/check', JSON.stringify({
+        package: require(workingOptions.package),
+        shrinkwrap: require(workingOptions.shrinkwrap),
+        exceptions: exceptions
+      }))
+      .reply(200, findings);
+
+    Check({ package: workingOptions.package, shrinkwrap: workingOptions.shrinkwrap, exceptions: exceptions }, function (err, results) {
+
+      expect(err).to.not.exist();
+      expect(results).to.exist();
       done();
     });
 
