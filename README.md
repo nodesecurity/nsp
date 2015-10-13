@@ -15,6 +15,22 @@ requireSafe helps you keep your node applications secure. With requireSafe you c
 * To install the requireSafe command line tool: `npm install -g requiresafe`
 * Then run `requiresafe --help` to find out more.
 
+## Exceptions
+
+The requireSafe CLI supports adding exceptions. These are advisories that you have evaluated and personally deemed unimportant for your project.
+
+In order to leverage this capability, create a `.requiresaferc` file in the root of your project with content like the following:
+
+```js
+{
+  "exceptions": ["https://requiresafe.com/advisories/12"]
+}
+```
+
+The URLs used in the array should match the advisory link that the CLI reports. With this in place, you will no longer receive warnings about any advisories in the exceptions array.
+
+Be careful using this feature. If you add code later that is impacted by an excluded advisory, requireSafe has no way of knowing. Keep a careful eye on your exceptions.
+
 ## Code Climate requiresafe Engine
 
 `codeclimate-requiresafe` is a Code Climate engine that wraps the requiresafe CLI. You can run it on your command line using the Code Climate CLI, or on our hosted analysis platform.
