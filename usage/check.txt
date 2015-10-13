@@ -4,7 +4,7 @@ requiresafe check
 
 Parameters
 
-  --output-format (-o): optional
+  --output (-o): optional
 
     valid values are:
         default
