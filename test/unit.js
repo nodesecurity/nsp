@@ -122,7 +122,7 @@ describe('check', function () {
 
   it('sends exceptions', function (done) {
 
-    var exceptions = ['https://requiresafe.com/advisories/39'];
+    var exceptions = ['https://requiresafe.com/advisories/39', 'https://requiresafe.com/advisories/9000'];
 
     Nock('https://api.requiresafe.com')
       .post('/check', JSON.stringify({
@@ -146,6 +146,19 @@ describe('check', function () {
 
       expect(err).to.not.exist();
       expect(results).to.exist();
+      done();
+    });
+  });
+
+  it('responds correctly to validation errors', function (done) {
+
+    Nock('https://api.requiresafe.com')
+      .post('/check')
+      .reply(200);
+
+    Check(function (err, results) {
+
+      expect(err.message).to.equal('"value" must contain at least one of [package, shrinkwrap]');
       done();
     });
   });

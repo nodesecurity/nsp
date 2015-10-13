@@ -4,6 +4,9 @@
   "dependencies": {
     "marked": {
       "version": "0.3.3"
+    },
+    "dummy": {
+    	"version": "0.0.0"
     }
   }
 }
