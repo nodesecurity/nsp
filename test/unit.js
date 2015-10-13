@@ -2,21 +2,21 @@
 
 var Code = require('code');
 var Lab = require('lab');
-var Check = require('../lib/check.js');
 var Nock = require('nock');
+var Path = require('path');
+var Check = require('../lib/check.js');
 
 var lab = exports.lab = Lab.script();
 var describe = lab.describe;
 var it = lab.it;
 var expect = Code.expect;
 
+var workingOptions = {
+  package: Path.resolve(__dirname, './data/package.json'),
+  shrinkwrap: Path.resolve(__dirname, './data/npm-shrinkwrap.json')
+};
+
 describe('check', function () {
-
-  lab.beforeEach(function (done) {
-
-    Nock('https://api.requiresafe.com').post('/check').reply(404);
-    done();
-  });
 
   it('Responds correctly when package.json can\'t be found', function (done) {
 
@@ -55,10 +55,10 @@ describe('check', function () {
 
       expect(err.message).to.equal('Got an invalid response from requireSafe, please email the above debug output to support@requiresafe.com');
       done();
-    });
-  });
+    })
+;  });
 
-  it('Responds correctly to package being undefined', { timeout: 10000 }, function (done) {
+  it('Responds correctly to package being undefined', function (done) {
 
     Check({ package: undefined, shrinkwrap: './npm-shrinkwrap.json' }, function (err) {
 
@@ -74,5 +74,49 @@ describe('check', function () {
       expect(err.message).to.equal('"value" must contain at least one of [package, shrinkwrap]');
       done();
     });
+  });
+
+  it('Responds correctly to receiving a 200 but no findings', function (done) {
+
+    Nock('https://api.requiresafe.com')
+      .post('/check')
+      .reply(200, []);
+
+    Check(workingOptions, function (err, results) {
+
+      expect(err).to.not.exist();
+      expect(results).to.deep.equal([]);
+      done();
+    });
+  });
+
+  it('Responds correctly to receiving a 200 and findings', function (done) {
+
+    var findings = require('./data/findings.json');
+    Nock('https://api.requiresafe.com')
+      .post('/check')
+      .reply(200, findings);
+
+    Check(workingOptions, function (err, results) {
+
+      expect(err).to.not.exist();
+      expect(results).to.deep.include(findings);
+      done();
+    });
+  });
+
+  it('responds correctly to a misc error', function (done) {
+
+    Nock('https://api.requiresafe.com')
+      .post('/check')
+      .replyWithError('Error: Client request error: connect ECONNREFUSED https://api.requiresafe.com');
+
+    Check(workingOptions, function (err, results) {
+
+      expect(err).to.exist();
+      expect(err.output.payload.message).to.equal('Error: Client request error: connect ECONNREFUSED https://api.requiresafe.com');
+      done();
+    });
+
   });
 });

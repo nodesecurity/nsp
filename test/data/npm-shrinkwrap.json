@@ -1,0 +1,9 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "dependencies": {
+    "marked": {
+      "version": "0.3.3"
+    }
+  }
+}
