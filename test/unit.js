@@ -18,6 +18,8 @@ var workingOptions = {
 
 var findings = require('./data/findings.json');
 
+var exceptions = ['https://requiresafe.com/advisories/39', 'https://requiresafe.com/advisories/9000'];
+
 describe('check', function () {
 
   it('Responds correctly when package.json can\'t be found', function (done) {
@@ -57,8 +59,8 @@ describe('check', function () {
 
       expect(err.message).to.equal('Got an invalid response from requireSafe, please email the above debug output to support@requiresafe.com');
       done();
-    })
-;  });
+    });
+  });
 
   it('Responds correctly to package being undefined', function (done) {
 
@@ -136,7 +138,11 @@ describe('check', function () {
 
   it('Sends exceptions', function (done) {
 
-    var exceptions = ['https://requiresafe.com/advisories/39', 'https://requiresafe.com/advisories/9000'];
+    var options = {
+      package: workingOptions.package,
+      shrinkwrap: workingOptions.shrinkwrap,
+      exceptions: exceptions
+    };
 
     Nock('https://api.requiresafe.com')
       .post('/check', JSON.stringify({
@@ -146,7 +152,7 @@ describe('check', function () {
       }))
       .reply(200, findings);
 
-    Check(Object.assign(workingOptions, { exceptions: exceptions }), function (err, results) {
+    Check(options, function (err, results) {
 
       expect(err).to.not.exist();
       expect(results).to.exist();
@@ -156,7 +162,15 @@ describe('check', function () {
 
   it('Works offline', function (done) {
 
-    Check(Object.assign(workingOptions, { advisoriesPath: '../test/data/advisories', offline: true }), function (err, results) {
+    var options = {
+      package: workingOptions.package,
+      shrinkwrap: workingOptions.shrinkwrap,
+      exceptions: exceptions,
+      advisoriesPath: '../test/data/advisories',
+      offline: true
+    };
+
+    Check(options, function (err, results) {
 
       expect(err).to.not.exist();
       expect(results).to.exist();
@@ -179,13 +193,18 @@ describe('check', function () {
 
   it('Uses proxy', function (done) {
 
+    var options = {
+      package: workingOptions.package,
+      shrinkwrap: workingOptions.shrinkwrap,
+      proxy: 'http://127.0.0.1:8080'
+    };
+
     Nock('http://127.0.0.1:8080')
       .post('/check')
       .reply(200);
 
-    Check(Object.assign(workingOptions, { proxy: 'http://127.0.0.1:8080' }), function (err, results) {
+    Check(options, function (err, results) {
 
-      // console.log(err, results);
       done();
     });
   });
