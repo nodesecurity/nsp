@@ -1,0 +1,20 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "dependencies": {
+    "requiresafe": {
+      "version": "0.1.1",
+      "dependencies": {
+        "marked": {
+          "version": "4.0.0"
+        }
+      }
+    },
+    "marked": {
+      "version": "0.3.3"
+    },
+    "dummy": {
+    	"version": "0.0.0"
+    }
+  }
+}

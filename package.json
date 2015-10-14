@@ -19,8 +19,9 @@
   },
   "devDependencies": {
     "code": "^1.5.0",
-    "lab": "^6.1.0",
     "git-validate": "^2.1.0",
+    "lab": "^6.1.0",
+    "nock": "^2.15.0",
     "shrinkydink": "^1.0.0"
   },
   "keywords": [
@@ -36,7 +37,7 @@
   "scripts": {
     "configure-local": "node -e \"var uc = require('./lib/update-config'); uc('local', true, process.exit)\"",
     "setup-offline": "curl -sS https://api.requiresafe.com/advisories -o advisories.json",
-    "test": "lab -a code -L",
+    "test": "lab -a code -L -t 100",
     "shrinkwrap": "npm shrinkwrap && shrinkydink"
   },
   "pre-commit": [
