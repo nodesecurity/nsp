@@ -106,7 +106,21 @@ describe('check', function () {
     });
   });
 
-  it('responds correctly to a misc error', function (done) {
+  it('Handles package and shrinkwrap being objects', function (done) {
+
+    Nock('https://api.requiresafe.com')
+      .post('/check')
+      .reply(200, findings);
+
+    Check({ package: require(workingOptions.package), shrinkwrap: require(workingOptions.shrinkwrap) }, function (err, results) {
+
+      expect(err).to.not.exist();
+      expect(results).to.deep.include(findings);
+      done();
+    });
+  });
+
+  it('Responds correctly to a misc error', function (done) {
 
     Nock('https://api.requiresafe.com')
       .post('/check')
@@ -120,7 +134,7 @@ describe('check', function () {
     });
   });
 
-  it('sends exceptions', function (done) {
+  it('Sends exceptions', function (done) {
 
     var exceptions = ['https://requiresafe.com/advisories/39', 'https://requiresafe.com/advisories/9000'];
 
@@ -140,7 +154,7 @@ describe('check', function () {
     });
   });
 
-  it('works offline', function (done) {
+  it('Works offline', function (done) {
 
     Check(Object.assign(workingOptions, { advisoriesPath: '../test/data/advisories', offline: true }), function (err, results) {
 
@@ -150,7 +164,7 @@ describe('check', function () {
     });
   });
 
-  it('responds correctly to validation errors', function (done) {
+  it('Responds correctly to validation errors', function (done) {
 
     Nock('https://api.requiresafe.com')
       .post('/check')
@@ -159,6 +173,19 @@ describe('check', function () {
     Check(function (err, results) {
 
       expect(err.message).to.equal('"value" must contain at least one of [package, shrinkwrap]');
+      done();
+    });
+  });
+
+  it('Uses proxy', function (done) {
+
+    Nock('http://127.0.0.1:8080')
+      .post('/check')
+      .reply(200);
+
+    Check(Object.assign(workingOptions, { proxy: 'http://127.0.0.1:8080' }), function (err, results) {
+
+      // console.log(err, results);
       done();
     });
   });

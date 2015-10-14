@@ -28,6 +28,4 @@
 	"title": "uglify-js incorrectly handles non-boolean comparisons during minification",
 	"path": ["jsxgettext-recursive", "jsxgettext", "jade", "transformers", "uglify-js"],
 	"advisory": "https://requiresafe.com/advisories/39"
-}, {
-	"module": "dummy"
 }]
