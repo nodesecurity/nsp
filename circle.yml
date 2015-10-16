@@ -1,0 +1,9 @@
+machine:
+  environment:
+    NODE_ENV: test
+  services:
+    - docker
+  node:
+    version:
+      - "4"
+      - "0.10.40"
