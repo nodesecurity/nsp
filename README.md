@@ -1,6 +1,6 @@
 # requireSafe (+)
 
-[![Build Status](https://travis-ci.org/requiresafe/cli.svg)](https://travis-ci.org/requiresafe/cli)
+[![Circle CI](https://circleci.com/gh/requiresafe/cli.svg?style=svg)](https://circleci.com/gh/requiresafe/cli)
 
 ## About requireSafe
 
