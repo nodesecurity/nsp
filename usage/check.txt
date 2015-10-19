@@ -8,6 +8,7 @@ Parameters
 
     valid values are:
         default
+        summary
         json
         codeclimate
         none (does what you think it does)
