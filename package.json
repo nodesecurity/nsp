@@ -1,7 +1,7 @@
 {
   "name": "requiresafe",
   "description": "the requiresafe.com command line interface tool",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "author": "^lift security",
   "bin": {
     "requiresafe": "bin/requiresafe"
@@ -38,7 +38,7 @@
   "scripts": {
     "setup-offline": "curl -sS https://api.requiresafe.com/advisories -o advisories.json",
     "test": "lab -a code -L -t 100",
-    "requiresafe": "bin/requiresafe check", 
+    "requiresafe": "bin/requiresafe check",
     "shrinkwrap": "npm shrinkwrap && shrinkydink"
   },
   "pre-commit": [
