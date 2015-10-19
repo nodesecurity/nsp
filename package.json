@@ -38,6 +38,7 @@
   "scripts": {
     "setup-offline": "curl -sS https://api.requiresafe.com/advisories -o advisories.json",
     "test": "lab -a code -L -t 100",
+    "requiresafe": "bin/requiresafe check", 
     "shrinkwrap": "npm shrinkwrap && shrinkydink"
   },
   "pre-commit": [

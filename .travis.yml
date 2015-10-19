@@ -7,3 +7,6 @@ node_js:
 
 before_install:
   - npm install -g npm
+
+before_script:
+  - npm run requiresafe
