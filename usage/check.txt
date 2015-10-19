@@ -15,3 +15,7 @@ Parameters
   --offline: optional
 
     when network is unavailable you can use this (but it won't have as many results as the online version)
+
+  --warn-only: optional
+
+    report errors, but always quit with an exit code of 0
