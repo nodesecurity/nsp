@@ -1,6 +1,6 @@
 requiresafe check
 
-  checks a package.json / npm-shirkwrap.json for known vulnerabilities against the requireSafe API. non-public and repository based dependencies are currently skipped.
+  checks a package.json / npm-shrinkwrap.json for known vulnerabilities against the requireSafe API. non-public and repository based dependencies are currently skipped.
 
 Parameters
 
