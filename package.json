@@ -7,7 +7,7 @@
     "requiresafe": "bin/requiresafe"
   },
   "dependencies": {
-    "@requiresafe/npm-utils": "^2.5.3",
+    "requiresafe-npm-utils": "^2.5.3",
     "chalk": "^1.1.1",
     "cli-table": "^0.3.1",
     "https-proxy-agent": "^1.0.0",
@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "code": "^1.5.0",
+    "eslint-config-requiresafe": "^1.0.0",
     "git-validate": "^2.1.0",
     "lab": "^6.1.0",
     "nock": "^2.15.0",
@@ -35,7 +36,6 @@
     "url": "git://github.com/requiresafe/cli.git"
   },
   "scripts": {
-    "configure-local": "node -e \"var uc = require('./lib/update-config'); uc('local', true, process.exit)\"",
     "setup-offline": "curl -sS https://api.requiresafe.com/advisories -o advisories.json",
     "test": "lab -a code -L -t 100",
     "shrinkwrap": "npm shrinkwrap && shrinkydink"
