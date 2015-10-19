@@ -1,7 +1,7 @@
 {
   "name": "requiresafe",
   "description": "the requiresafe.com command line interface tool",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "author": "^lift security",
   "bin": {
     "requiresafe": "bin/requiresafe"
