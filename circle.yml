@@ -1,0 +1,17 @@
+machine:
+  environment:
+    NODE_ENV: test
+  services:
+    - docker
+  node:
+    version: "4"
+
+test:
+  override:
+    - nvm use v4.2.1
+    - npm install
+    - npm test
+    - nvm i 0.10.40
+    - nvm use 0.10.40
+    - npm rebuild
+    - npm test
