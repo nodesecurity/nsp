@@ -6,4 +6,12 @@ machine:
   node:
     version:
       - "4"
-      - "0.10.40"
+
+test:
+  override:
+    - nvm use v4.2.1
+    - npm install
+    - npm test
+    - nvm use 0.10.40
+    - npm rebuild
+    - npm test
