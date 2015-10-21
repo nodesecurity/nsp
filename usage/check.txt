@@ -1,6 +1,6 @@
 requiresafe check
 
-  checks a package.json / npm-shirkwrap.json for known vulnerabilities against the requireSafe API. non-public and repository based dependencies are currently skipped.
+  checks a package.json / npm-shrinkwrap.json for known vulnerabilities against the requireSafe API. non-public and repository based dependencies are currently skipped.
 
 Parameters
 
@@ -8,6 +8,7 @@ Parameters
 
     valid values are:
         default
+        summary
         json
         codeclimate
         none (does what you think it does)
@@ -15,3 +16,7 @@ Parameters
   --offline: optional
 
     when network is unavailable you can use this (but it won't have as many results as the online version)
+
+  --warn-only: optional
+
+    report errors, but always quit with an exit code of 0

@@ -61,7 +61,7 @@ To configure the proxy set the proxy key in your `.requiresaferc` file. This can
 
 ## Code Climate requiresafe Engine
 
-`codeclimate-requiresafe` is a Code Climate engine that wraps the requiresafe CLI. You can run it on your command line using the Code Climate CLI, or on our hosted analysis platform.
+`codeclimate-requiresafe` is a Code Climate engine that wraps the requiresafe CLI. You can run it on your command line using the Code Climate CLI, or Code Climate's <a href="http://codeclimate.com">hosted analysis platform</a>.
 
 Note that this engine *only* works if your code has a `npm-shrinkwrap.json` file committed.
 

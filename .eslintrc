@@ -1,9 +1,3 @@
 {
-  "extends": "eslint-config-hapi",
-  "rules": {
-    "indent": [2, 2],
-    "strict": [2, "global"],
-    "arrow-parens": 2,
-    "arrow-spacing": 2
-  }
+  "extends": "eslint-config-requiresafe/es5"
 }
