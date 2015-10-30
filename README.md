@@ -1,39 +1,36 @@
-# requireSafe (+)
+# nsp
 
-[![Circle CI](https://circleci.com/gh/requiresafe/cli.svg?style=svg)](https://circleci.com/gh/requiresafe/cli)
+## About Node Security
 
-## About requireSafe
+Node Security helps you keep your node applications secure. With Node Security you can:
 
-requireSafe helps you keep your node applications secure. With requireSafe you can:
-
-* Receive immediate notifications when Node Security Project advisories are created or updated.
 * Make use of the CLI tool to help identify known vulnerabilities in your own projects.
 * Get access to Node Security news and information from the ^lift team.
 
-## Installing the CLI
+## Installing the CLI (nsp)
 
-* To install the requireSafe command line tool: `npm install -g requiresafe`
-* Then run `requiresafe --help` to find out more.
+* To install the Node Security command line tool: `npm install -g nsp`
+* Then run `nsp --help` to find out more.
 
 ## Exceptions
 
-The requireSafe CLI supports adding exceptions. These are advisories that you have evaluated and personally deemed unimportant for your project.
+The Node Security CLI supports adding exceptions. These are advisories that you have evaluated and personally deemed unimportant for your project.
 
-In order to leverage this capability, create a `.requiresaferc` file in the root of your project with content like the following:
+In order to leverage this capability, create a `.nsprc` file in the root of your project with content like the following:
 
 ```js
 {
-  "exceptions": ["https://requiresafe.com/advisories/12"]
+  "exceptions": ["https://nodesecurity.io/advisories/12"]
 }
 ```
 
 The URLs used in the array should match the advisory link that the CLI reports. With this in place, you will no longer receive warnings about any advisories in the exceptions array.
 
-Be careful using this feature. If you add code later that is impacted by an excluded advisory, requireSafe has no way of knowing. Keep a careful eye on your exceptions.
+Be careful using this feature. If you add code later that is impacted by an excluded advisory, Node Security has no way of knowing. Keep a careful eye on your exceptions.
 
 ## Proxy Support
 
-The requireSafe CLI has proxy support by using [proxy-agent](https://www.npmjs.com/package/proxy-agent).
+The Node Security CLI has proxy support by using [proxy-agent](https://www.npmjs.com/package/proxy-agent).
 
 The currently implemented protocol mappings are listed in the table below:
 
@@ -49,7 +46,7 @@ The currently implemented protocol mappings are listed in the table below:
 
 
 
-To configure the proxy set the proxy key in your `.requiresaferc` file. This can be put in the root of your project or in your home directory.
+To configure the proxy set the proxy key in your `.nsprc` file. This can be put in the root of your project or in your home directory.
 
 ```js
 {
@@ -59,9 +56,9 @@ To configure the proxy set the proxy key in your `.requiresaferc` file. This can
 
 
 
-## Code Climate requiresafe Engine
+## Code Climate Node Security Engine
 
-`codeclimate-requiresafe` is a Code Climate engine that wraps the requiresafe CLI. You can run it on your command line using the Code Climate CLI, or Code Climate's <a href="http://codeclimate.com">hosted analysis platform</a>.
+`codeclimate-nodesecurity` is a Code Climate engine that wraps the Node Security CLI. You can run it on your command line using the Code Climate CLI, or Code Climate's <a href="http://codeclimate.com">hosted analysis platform</a>.
 
 Note that this engine *only* works if your code has a `npm-shrinkwrap.json` file committed.
 
@@ -70,9 +67,9 @@ Note that this engine *only* works if your code has a `npm-shrinkwrap.json` file
 First, build this repo with docker
 
 ```
-git clone git@github.com:requiresafe/codeclimate-requiresafe
-cd codeclimate-requiresafe
-docker build -t codeclimate/codeclimate-requiresafe .
+git clone git@github.com:nodesecurity/nsp
+cd nsp
+docker build -t codeclimate/codeclimate-nodesecurity .
 ```
 
 Install the codeclimate CLI
@@ -93,7 +90,7 @@ Then edit `.codeclimate.yml` to add the engine like so
 ```yaml
 ---
 engines:
-  requiresafe:
+  nodesecurity:
     enabled: true
 exclude_paths: []
 ```
@@ -106,7 +103,7 @@ codeclimate analyze --dev
 
 ## Contact
 
-requireSafe (+) is brought to you by [^lift security](https://liftsecurity.io).
+Node Security (+) is brought to you by [^lift security](https://liftsecurity.io).
 
 ## License
 

@@ -1,10 +1,10 @@
 {
-  "name": "requiresafe",
-  "description": "the requiresafe.com command line interface tool",
-  "version": "2.3.1",
+  "name": "nsp",
+  "description": "The Node Security (nodesecurity.io) command line interface",
+  "version": "2.0.0",
   "author": "^lift security",
   "bin": {
-    "requiresafe": "bin/requiresafe"
+    "nsp": "bin/nsp"
   },
   "dependencies": {
     "requiresafe-npm-utils": "^2.5.3",
@@ -27,18 +27,19 @@
   },
   "keywords": [
     "security",
-    "requiresafe"
+    "requiresafe",
+    "nodesecurity"
   ],
   "license": "Apache-2.0",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/requiresafe/cli.git"
+    "url": "git://github.com/nodesecurity/nsp.git"
   },
   "scripts": {
-    "setup-offline": "curl -sS https://api.requiresafe.com/advisories -o advisories.json",
+    "setup-offline": "curl -sS https://api.nodesecurity.io/advisories -o advisories.json",
     "test": "lab -a code -L -t 100",
-    "requiresafe": "bin/requiresafe check",
+    "nsp": "bin/nsp check",
     "shrinkwrap": "npm shrinkwrap && shrinkydink"
   },
   "pre-commit": [

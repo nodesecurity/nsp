@@ -18,7 +18,7 @@ var workingOptions = {
 
 var findings = require('./data/findings.json');
 
-var exceptions = ['https://requiresafe.com/advisories/39', 'https://requiresafe.com/advisories/9000'];
+var exceptions = ['https://nodesecurity.io/advisories/39', 'https://nodesecurity.io/advisories/9000'];
 
 describe('check', function () {
 
@@ -51,13 +51,13 @@ describe('check', function () {
 
   it('Responds correctly on 404', function (done) {
 
-    Nock('https://api.requiresafe.com')
+    Nock('https://api.nodesecurity.io')
       .post('/check')
       .reply(404);
 
     Check({ package: '../package.json', shrinkwrap: './npm-shrinkwrap.json' }, function (err) {
 
-      expect(err.message).to.equal('Got an invalid response from requireSafe, please email the above debug output to support@requiresafe.com');
+      expect(err.message).to.equal('Got an invalid response from Node Security, please email the above debug output to support@nodesecurity.io');
       done();
     });
   });
@@ -82,7 +82,7 @@ describe('check', function () {
 
   it('Responds correctly to receiving a 200 but no findings', function (done) {
 
-    Nock('https://api.requiresafe.com')
+    Nock('https://api.nodesecurity.io')
       .post('/check')
       .reply(200, []);
 
@@ -96,7 +96,7 @@ describe('check', function () {
 
   it('Responds correctly to receiving a 200 and findings', function (done) {
 
-    Nock('https://api.requiresafe.com')
+    Nock('https://api.nodesecurity.io')
       .post('/check')
       .reply(200, findings);
 
@@ -110,7 +110,7 @@ describe('check', function () {
 
   it('Handles package and shrinkwrap being objects', function (done) {
 
-    Nock('https://api.requiresafe.com')
+    Nock('https://api.nodesecurity.io')
       .post('/check')
       .reply(200, findings);
 
@@ -124,14 +124,14 @@ describe('check', function () {
 
   it('Responds correctly to a misc error', function (done) {
 
-    Nock('https://api.requiresafe.com')
+    Nock('https://api.nodesecurity.io')
       .post('/check')
-      .replyWithError('Error: Client request error: connect ECONNREFUSED https://api.requiresafe.com');
+      .replyWithError('Error: Client request error: connect ECONNREFUSED https://api.nodesecurity.io');
 
     Check(workingOptions, function (err, results) {
 
       expect(err).to.exist();
-      expect(err.output.payload.message).to.equal('Error: Client request error: connect ECONNREFUSED https://api.requiresafe.com');
+      expect(err.output.payload.message).to.equal('Error: Client request error: connect ECONNREFUSED https://api.nodesecurity.io');
       done();
     });
   });
@@ -144,7 +144,7 @@ describe('check', function () {
       exceptions: exceptions
     };
 
-    Nock('https://api.requiresafe.com')
+    Nock('https://api.nodesecurity.io')
       .post('/check', JSON.stringify({
         package: require(workingOptions.package),
         shrinkwrap: require(workingOptions.shrinkwrap),
@@ -180,7 +180,7 @@ describe('check', function () {
 
   it('Responds correctly to validation errors', function (done) {
 
-    Nock('https://api.requiresafe.com')
+    Nock('https://api.nodesecurity.io')
       .post('/check')
       .reply(200);
 

@@ -3,29 +3,29 @@
 	"version": "2.3.6",
 	"title": "uglify-js incorrectly handles non-boolean comparisons during minification",
 	"path": ["bower", "handlebars", "uglify-js"],
-	"advisory": "https://requiresafe.com/advisories/39"
+	"advisory": "https://nodesecurity.io/advisories/39"
 }, {
 	"module": "uglify-js",
 	"version": "2.3.6",
 	"title": "uglify-js incorrectly handles non-boolean comparisons during minification",
 	"path": ["handlebars", "uglify-js"],
-	"advisory": "https://requiresafe.com/advisories/39"
+	"advisory": "https://nodesecurity.io/advisories/39"
 }, {
 	"module": "semver",
 	"version": "2.3.2",
 	"title": "semver Regular Expression Denial of Service",
 	"path": ["bower", "semver"],
-	"advisory": "https://requiresafe.com/advisories/32"
+	"advisory": "https://nodesecurity.io/advisories/32"
 }, {
 	"module": "uglify-js",
 	"version": "2.2.5",
 	"title": "uglify-js incorrectly handles non-boolean comparisons during minification",
 	"path": ["i18n-abide", "jsxgettext", "jade", "transformers", "uglify-js"],
-	"advisory": "https://requiresafe.com/advisories/39"
+	"advisory": "https://nodesecurity.io/advisories/39"
 }, {
 	"module": "uglify-js",
 	"version": "2.2.5",
 	"title": "uglify-js incorrectly handles non-boolean comparisons during minification",
 	"path": ["jsxgettext-recursive", "jsxgettext", "jade", "transformers", "uglify-js"],
-	"advisory": "https://requiresafe.com/advisories/39"
+	"advisory": "https://nodesecurity.io/advisories/39"
 }]
