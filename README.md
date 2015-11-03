@@ -12,6 +12,16 @@ Node Security helps you keep your node applications secure. With Node Security y
 * To install the Node Security command line tool: `npm install -g nsp`
 * Then run `nsp --help` to find out more.
 
+## Output Format
+
+You can adjust how the client outputs findings by specifying one of the following format options.
+
+- default
+- summary
+- json
+- codeclimate
+- none
+
 ## Exceptions
 
 The Node Security CLI supports adding exceptions. These are advisories that you have evaluated and personally deemed unimportant for your project.
