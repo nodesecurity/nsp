@@ -1,3 +1,3 @@
 {
-  "extends": "eslint-config-requiresafe/es5"
+  "extends": "nodesecurity/es5"
 }
