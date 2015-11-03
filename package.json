@@ -19,7 +19,10 @@
   },
   "devDependencies": {
     "code": "^1.5.0",
+    "eslint": "1.8.0",
+    "eslint-config-hapi": "5.0.0",
     "eslint-config-nodesecurity": "^1.0.0",
+    "eslint-plugin-hapi": "2.0.0",
     "git-validate": "^2.1.0",
     "lab": "^6.1.0",
     "nock": "^2.15.0",
@@ -37,6 +40,7 @@
     "url": "git://github.com/nodesecurity/nsp.git"
   },
   "scripts": {
+    "lint": "eslint .",
     "setup-offline": "curl -sS https://api.nodesecurity.io/advisories -o advisories.json",
     "test": "lab -a code -L -t 100",
     "nsp": "bin/nsp check",
