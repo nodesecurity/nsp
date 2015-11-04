@@ -39,7 +39,7 @@
     "url": "git://github.com/nodesecurity/nsp.git"
   },
   "scripts": {
-    "lint": "eslint . bin/eslint",
+    "lint": "eslint . bin/nsp",
     "setup-offline": "curl -sS https://api.nodesecurity.io/advisories -o advisories.json",
     "test": "lab -a code -L -t 100",
     "nsp": "bin/nsp check",
