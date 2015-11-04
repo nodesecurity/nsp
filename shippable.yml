@@ -6,6 +6,9 @@ node_js:
 before_install:
   - . /root/.nvm/nvm.sh && nvm install $SHIPPABLE_NODE_VERSION
   - . /root/.nvm/nvm.sh && nvm alias default $SHIPPABLE_NODE_VERSION
+  - . /root/.nvm/nvm.sh && node -v
+  - . /root/.nvm/nvm.sh && npm i -g npm
+  - . /root/.nvm/nvm.sh && npm -v
 install:
   - . /root/.nvm/nvm.sh && npm install
 script:
