@@ -4,8 +4,9 @@ node_js:
   - "4"
   - "5"
 before_install:
-  - nvm install $SHIPPABLE_NODE_VERSION
+  - . /root/.nvm/nvm.sh && nvm install $SHIPPABLE_NODE_VERSION
+  - . /root/.nvm/nvm.sh && nvm alias default $SHIPPABLE_NODE_VERSION
 install:
-  - npm install
+  - . /root/.nvm/nvm.sh && npm install
 script:
-  - npm test
+  - . /root/.nvm/nvm.sh && npm test
