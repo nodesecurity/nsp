@@ -9,4 +9,4 @@ RUN apk --update add nodejs curl && \
     npm install && \
     npm run setup-offline
 
-CMD ["/app/bin/nsp", "check", "--offline", "-o", "codeclimate"]
+CMD ["/app/bin/nsp", "check", "--offline", "--warn-only", "-o", "codeclimate"]
