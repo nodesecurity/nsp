@@ -1,4 +1,4 @@
-# nsp ![build status](https://img.shields.io/shippable/563504d61895ca447422449a.svg)
+# nsp [![build status](https://img.shields.io/shippable/563504d61895ca447422449a.svg)](https://app.shippable.com/projects/563504d61895ca447422449a)
 
 ## About Node Security
 
