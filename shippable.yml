@@ -3,4 +3,9 @@ node_js:
   - "0.10"
   - "4"
   - "5"
-
+before_install:
+  - nvm install $SHIPPABLE_NODE_VERSION
+install:
+  - npm install
+script:
+  - npm test
