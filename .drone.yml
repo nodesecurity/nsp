@@ -1,0 +1,11 @@
+build:
+  image: node:$$NODE_VERSION
+  commands:
+    - npm install
+    - npm test
+matrix:
+  NODE_VERSION:
+    - 0.10
+    - 0.12
+    - 4
+    - 5
