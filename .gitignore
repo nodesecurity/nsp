@@ -2,3 +2,4 @@ node_modules
 npm-debug.log
 advisories.json
 !test/data/advisories.json
+.drone.sec.yml

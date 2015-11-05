@@ -2,6 +2,7 @@ build:
   image: node:$$NODE_VERSION
   commands:
     - npm install
+    - npm run lint
     - npm test
 matrix:
   NODE_VERSION:
@@ -9,3 +10,8 @@ matrix:
     - 0.12
     - 4
     - 5
+notify:
+  slack:
+    webhook_url: $$SLACK_HOOK
+    channel: alerts
+    username: drone
