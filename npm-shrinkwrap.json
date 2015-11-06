@@ -1,6 +1,6 @@
 {
   "name": "nsp",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "dependencies": {
     "agent-base": {
       "version": "2.0.1"
