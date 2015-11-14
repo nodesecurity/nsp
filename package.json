@@ -11,19 +11,19 @@
     "chalk": "^1.1.1",
     "cli-table": "^0.3.1",
     "https-proxy-agent": "^1.0.0",
-    "joi": "^6.9.1",
-    "rc": "^1.1.2",
+    "joi": "^7.0.0",
+    "rc": "^1.1.5",
     "semver": "^5.0.3",
     "subcommand": "^2.0.3",
-    "wreck": "^6.3.0"
+    "wreck": "^7.0.0"
   },
   "devDependencies": {
-    "code": "^1.5.0",
+    "code": "^2.0.1",
     "eslint": "^1.8.0",
     "eslint-config-nodesecurity": "^1.1.0",
-    "eslint-plugin-hapi": "^2.0.0",
+    "eslint-plugin-hapi": "^4.0.0",
     "git-validate": "^2.1.0",
-    "lab": "^6.1.0",
+    "lab": "^7.3.0",
     "nock": "^2.15.0",
     "shrinkydink": "^1.0.0"
   },
