@@ -67,10 +67,13 @@ To configure the proxy set the proxy key in your `.nsprc` file. This can be put 
 ## Offline Mode
 nsp has an offline mode which was previously undocumented. We recommend not relying on offline support as it may become unsupported in the future as new features are added.
 
-1. In the directory in which the nsp module is installed run `npm run setup-offline`. If you are using nvm that di
-rectory might be something like `/Users/exampleuser/.nvm/versions/node/v4.2.1/lib/node_modules/nsp`
+1. In the directory in which the nsp module is installed run `npm run setup-offline`. If you are using nvm that
+directory might be something like `/Users/exampleuser/.nvm/versions/node/v4.2.1/lib/node_modules/nsp`
 
-1. Use the offline flag when you run nsp `nsp check --offline`
+2. Use the offline flag when you run nsp `nsp check --offline`
+
+3. Optionally specify an `advisoriesPath` either in `.nsprc` or as `--advisoriesPath` option that points to the
+full path of offline `advisories.json`.
 
 A couple of notes
 - Offline mode requires that your project include a npm-shrinkwrap.json file. 
