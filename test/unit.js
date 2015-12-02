@@ -160,13 +160,13 @@ describe('check', function () {
     });
   });
 
-  it('Works offline', function (done) {
+  it('works offline with relative path', function (done) {
 
     var options = {
       package: workingOptions.package,
       shrinkwrap: workingOptions.shrinkwrap,
       exceptions: exceptions,
-      advisoriesPath: '../test/data/advisories',
+      advisoriesPath: './test/data/advisories.json',
       offline: true
     };
 
@@ -177,6 +177,26 @@ describe('check', function () {
       done();
     });
   });
+
+  it('works offline with absolute path', function (done) {
+
+    var options = {
+      package: workingOptions.package,
+      shrinkwrap: workingOptions.shrinkwrap,
+      exceptions: exceptions,
+      advisoriesPath: Path.resolve(process.cwd(), './test/data/advisories.json'),
+      offline: true
+    };
+
+    Check(options, function (err, results) {
+
+      expect(err).to.not.exist();
+      expect(results).to.exist();
+      done();
+    });
+  });
+
+
 
   it('Responds correctly to validation errors', function (done) {
 
