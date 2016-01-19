@@ -1,4 +1,9 @@
-# nsp [![Build Status](https://drone.andyet.com/api/badges/nodesecurity/nsp/status.svg)](https://drone.andyet.com/nodesecurity/nsp)
+# nsp
+
+[![npm version][npm-badge]][npm-url]
+[![Build Status][drone-badge]][drone-url]
+[![Code Climate][codeclimate-badge]][codeclimate-url]
+[![Dependency Status][david-badge]][david-url]
 
 ## About Node Security
 
@@ -147,3 +152,13 @@ Node Security (+) is brought to you by [^lift security](https://liftsecurity.io)
 
     See the License for the specific language governing permissions and
     limitations under the License.
+
+
+[npm-badge]: https://img.shields.io/npm/v/nsp.svg
+[npm-url]: https://npmjs.com/package/nsp
+[drone-badge]: https://drone.andyet.com/api/badges/nodesecurity/nsp/status.svg
+[drone-url]: https://drone.andyet.com/nodesecurity/nsp
+[david-badge]: https://david-dm.org/nodesecurity/nsp.svg
+[david-url]: https://david-dm.org/nodesecurity/nsp
+[codeclimate-badge]: https://codeclimate.com/github/nodesecurity/nsp/badges/gpa.svg
+[codeclimate-url]: https://codeclimate.com/github/nodesecurity/nsp
