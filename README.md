@@ -38,6 +38,8 @@ The URLs used in the array should match the advisory link that the CLI reports. 
 
 Be careful using this feature. If you add code later that is impacted by an excluded advisory, Node Security has no way of knowing. Keep a careful eye on your exceptions.
 
+`.nsprc` is read using [rc](https://github.com/dominictarr/rc), so it supports comments using [json-strip-comments](https://github.com/sindresorhus/strip-json-comments).
+
 ## Proxy Support
 
 The Node Security CLI has proxy support by using [proxy-agent](https://www.npmjs.com/package/proxy-agent).
@@ -64,7 +66,21 @@ To configure the proxy set the proxy key in your `.nsprc` file. This can be put 
 }
 ```
 
+## Offline Mode
+nsp has an offline mode which was previously undocumented. We recommend not relying on offline support as it may become unsupported in the future as new features are added.
 
+First you need to obtain the offline advisories database. Do this by running the `npm run setup-offline` script provided by nsp
+
+Second you need to tell nsp where to find that file. You can do that 3 ways.
+1. Put it in the actual nsp module folder and no other configuration is required
+1. Specify it in the .nsprc configuration file `advisoriesPath: "/path/to/advisories.json"`
+1. Specify it from the command line when you call nsp `nsp check --offline --advisoriesPath=/path/to/advisories.json`
+
+When you call nsp check you will want to use the --offline flag
+
+A couple of notes
+- Offline mode requires that your project include a npm-shrinkwrap.json file.
+- Because of npm3 flattening reported paths may be incorrect.
 
 ## Code Climate Node Security Engine
 
@@ -117,7 +133,7 @@ Node Security (+) is brought to you by [^lift security](https://liftsecurity.io)
 
 ## License
 
-    Copyright (c) 2015 by ^Lift Security
+    Copyright (c) 2016 by ^Lift Security
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
