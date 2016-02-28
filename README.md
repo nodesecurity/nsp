@@ -136,7 +136,7 @@ Node Security (+) is brought to you by [^lift security](https://liftsecurity.io)
 
 ## License
 
-    Copyright (c) 2015 by ^Lift Security
+    Copyright (c) 2016 by ^Lift Security
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
