@@ -16,7 +16,7 @@ var workingOptions = {
   shrinkwrap: Path.resolve(__dirname, './data/npm-shrinkwrap.json')
 };
 
-var findings = require('./data/findings.json');
+var Findings = require('./data/findings.json');
 
 var exceptions = ['https://nodesecurity.io/advisories/39', 'https://nodesecurity.io/advisories/9000'];
 
@@ -98,12 +98,12 @@ describe('check', function () {
 
     Nock('https://api.nodesecurity.io')
       .post('/check')
-      .reply(200, findings);
+      .reply(200, Findings);
 
     Check(workingOptions, function (err, results) {
 
       expect(err).to.not.exist();
-      expect(results).to.deep.include(findings);
+      expect(results).to.deep.include(Findings);
       done();
     });
   });
@@ -112,12 +112,12 @@ describe('check', function () {
 
     Nock('https://api.nodesecurity.io')
       .post('/check')
-      .reply(200, findings);
+      .reply(200, Findings);
 
     Check({ package: require(workingOptions.package), shrinkwrap: require(workingOptions.shrinkwrap) }, function (err, results) {
 
       expect(err).to.not.exist();
-      expect(results).to.deep.include(findings);
+      expect(results).to.deep.include(Findings);
       done();
     });
   });
@@ -150,7 +150,7 @@ describe('check', function () {
         shrinkwrap: require(workingOptions.shrinkwrap),
         exceptions: exceptions
       }))
-      .reply(200, findings);
+      .reply(200, Findings);
 
     Check(options, function (err, results) {
 
@@ -191,7 +191,7 @@ describe('check', function () {
     });
   });
 
-  it('Uses proxy', function (done) {
+  it('Uses proxy from nsprc', function (done) {
 
     var options = {
       package: workingOptions.package,
@@ -208,4 +208,25 @@ describe('check', function () {
       done();
     });
   });
+
+  it('Uses proxy from env vars', function (done) {
+
+    process.env.https_proxy = process.env.HTTPS_PROXY = 'http://127.0.0.1:8080';
+
+    var options = {
+      package: workingOptions.package,
+      shrinkwrap: workingOptions.shrinkwrap
+    };
+
+    Nock('http://127.0.0.1:8080')
+      .post('/check')
+      .reply(200);
+
+    Check(options, function (err, results) {
+
+      done();
+    });
+  });
+
+
 });
