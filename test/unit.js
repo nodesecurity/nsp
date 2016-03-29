@@ -5,6 +5,7 @@ var Lab = require('lab');
 var Nock = require('nock');
 var Path = require('path');
 var Check = require('../lib/check.js');
+var Pkg = require('../package.json');
 
 var lab = exports.lab = Lab.script();
 var describe = lab.describe;
@@ -244,6 +245,23 @@ describe('check', function () {
 
     Check(options, function (err, results) {
 
+      done();
+    });
+  });
+
+  it('Includes X-NSP-VERSION in headers', function (done) {
+
+    Nock('https://api.nodesecurity.io', {
+      reqheaders: {
+        'X-NSP-VERSION': Pkg.version
+      }
+    })
+      .post('/check')
+      .reply(200, Findings);
+
+    Check(workingOptions, function (err, results) {
+
+      expect(err).to.not.exist();
       done();
     });
   });
