@@ -18,7 +18,7 @@
 
 'use strict';
 
-var subcommand = require('subcommand');
+var Subcommand = require('subcommand');
 var usage = require('../lib/utils/usage.js')('root.txt');
 
 var config = {
@@ -34,5 +34,5 @@ var config = {
   }
 };
 
-var route = subcommand(config);
+var route = Subcommand(config);
 route(process.argv.slice(2));
