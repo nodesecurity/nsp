@@ -1,17 +1,12 @@
 {
   "name": "nsp",
-  "version": "2.2.2",
+  "version": "2.3.0",
   "dependencies": {
     "chalk": {
-      "version": "1.1.1",
+      "version": "1.1.3",
       "dependencies": {
         "ansi-styles": {
-          "version": "2.2.1",
-          "dependencies": {
-            "color-convert": {
-              "version": "1.0.0"
-            }
-          }
+          "version": "2.2.1"
         },
         "escape-string-regexp": {
           "version": "1.0.5"
@@ -87,7 +82,7 @@
       }
     },
     "nodesecurity-npm-utils": {
-      "version": "3.2.0",
+      "version": "4.0.1",
       "dependencies": {
         "silent-npm-registry-client": {
           "version": "2.0.0",
@@ -108,13 +103,13 @@
                       "version": "0.0.6"
                     },
                     "readable-stream": {
-                      "version": "2.0.5",
+                      "version": "2.0.6",
                       "dependencies": {
                         "core-util-is": {
                           "version": "1.0.2"
                         },
                         "isarray": {
-                          "version": "0.0.1"
+                          "version": "1.0.0"
                         },
                         "process-nextick-args": {
                           "version": "1.0.6"
@@ -206,7 +201,7 @@
                       "version": "1.3.2",
                       "dependencies": {
                         "lru-cache": {
-                          "version": "4.0.0",
+                          "version": "4.0.1",
                           "dependencies": {
                             "pseudomap": {
                               "version": "1.0.2"
@@ -222,7 +217,7 @@
                       "version": "1.0.3",
                       "dependencies": {
                         "readable-stream": {
-                          "version": "2.0.5",
+                          "version": "2.0.6",
                           "dependencies": {
                             "core-util-is": {
                               "version": "1.0.2"
@@ -231,7 +226,7 @@
                               "version": "2.0.1"
                             },
                             "isarray": {
-                              "version": "0.0.1"
+                              "version": "1.0.0"
                             },
                             "process-nextick-args": {
                               "version": "1.0.6"
@@ -264,7 +259,7 @@
                       "version": "0.6.1"
                     },
                     "form-data": {
-                      "version": "1.0.0-rc3",
+                      "version": "1.0.0-rc4",
                       "dependencies": {
                         "async": {
                           "version": "1.5.2"
@@ -366,7 +361,7 @@
                               "version": "0.1.0"
                             },
                             "tweetnacl": {
-                              "version": "0.14.1"
+                              "version": "0.14.3"
                             },
                             "jodid25519": {
                               "version": "1.0.2"
@@ -408,7 +403,7 @@
                       "version": "0.0.5"
                     },
                     "tough-cookie": {
-                      "version": "2.2.1"
+                      "version": "2.2.2"
                     },
                     "tunnel-agent": {
                       "version": "0.4.2"
@@ -459,19 +454,19 @@
                   "version": "1.1.6"
                 },
                 "npmlog": {
-                  "version": "2.0.2",
+                  "version": "2.0.3",
                   "dependencies": {
                     "ansi": {
                       "version": "0.3.1"
                     },
                     "are-we-there-yet": {
-                      "version": "1.0.6",
+                      "version": "1.1.2",
                       "dependencies": {
                         "delegates": {
                           "version": "1.0.0"
                         },
                         "readable-stream": {
-                          "version": "2.0.5",
+                          "version": "2.0.6",
                           "dependencies": {
                             "core-util-is": {
                               "version": "1.0.2"
@@ -480,7 +475,7 @@
                               "version": "2.0.1"
                             },
                             "isarray": {
-                              "version": "0.0.1"
+                              "version": "1.0.0"
                             },
                             "process-nextick-args": {
                               "version": "1.0.6"
