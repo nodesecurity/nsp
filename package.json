@@ -1,7 +1,7 @@
 {
   "name": "nsp",
   "description": "The Node Security (nodesecurity.io) command line interface",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "author": "^lift security",
   "bin": {
     "nsp": "bin/nsp"
