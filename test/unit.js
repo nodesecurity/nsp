@@ -6,6 +6,7 @@ var Nock = require('nock');
 var Path = require('path');
 var Check = require('../lib/check.js');
 var Pkg = require('../package.json');
+var SanitizePackage = require('../lib/utils/sanitizePackage.js');
 
 var lab = exports.lab = Lab.script();
 var describe = lab.describe;
@@ -147,7 +148,7 @@ describe('check', function () {
 
     Nock('https://api.nodesecurity.io')
       .post('/check', JSON.stringify({
-        package: require(workingOptions.package),
+        package: SanitizePackage(require(workingOptions.package)),
         shrinkwrap: require(workingOptions.shrinkwrap),
         exceptions: exceptions
       }))
