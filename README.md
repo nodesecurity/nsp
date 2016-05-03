@@ -14,13 +14,15 @@ Node Security helps you keep your node applications secure. With Node Security y
 
 ## Output Format
 
-You can adjust how the client outputs findings by specifying one of the following format options.
+You can adjust how the client outputs findings by specifying one of the following format options:
 
 - default
 - summary
 - json
 - codeclimate
 - none
+
+Example: `nsp check --output summary`
 
 ## Exceptions
 
