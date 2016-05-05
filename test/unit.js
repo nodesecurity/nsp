@@ -198,7 +198,22 @@ describe('check', function () {
     });
   });
 
+  it('works offline with shrinkwrap object', function (done) {
 
+    var options = {
+      shrinkwrap: require(workingOptions.shrinkwrap),
+      exceptions: exceptions,
+      advisoriesPath: Path.resolve(process.cwd(), './test/data/advisories.json'),
+      offline: true
+    };
+
+    Check(options, function (err, results) {
+
+      expect(err).to.not.exist();
+      expect(results).to.exist();
+      done();
+    });
+  });
 
   it('Responds correctly to validation errors', function (done) {
 
