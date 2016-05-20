@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "chalk": "^1.1.1",
+    "checkstyle-formatter": "^1.0.0",
     "cli-table": "^0.3.1",
     "https-proxy-agent": "^1.0.0",
     "joi": "^6.9.1",

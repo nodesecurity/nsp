@@ -20,6 +20,7 @@ You can adjust how the client outputs findings by specifying one of the followin
 - summary
 - json
 - codeclimate
+- checkstyle
 - none
 
 Example: `nsp check --output summary`
