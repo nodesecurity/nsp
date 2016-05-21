@@ -25,3 +25,6 @@ Parameters
 
     report errors, but always quit with an exit code of 0
 
+  --subdep-warn-only: optional
+
+    report errors, but only use direct dependencies to calculate the exit code
