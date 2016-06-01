@@ -24,6 +24,13 @@ You can adjust how the client outputs findings by specifying one of the followin
 
 Example: `nsp check --output summary`
 
+Additionally, you can use [third-party formatters](https://www.npmjs.com/search?q=nsp+formatter). The packages of custom formatters must adhere to the naming scheme `nsp-formatter-<name>` and can then be referenced by that name:
+```bash
+$ npm install -g nsp nsp-formatter-checkstyle
+$ nsp check --output checkstyle
+```
+Please note that in case of naming conflicts built-in formatters (as listed above) take precedence. For instance, `nsp-formatter-json` would never be used since nsp ships with a `json` formatter.
+
 ## Exceptions
 
 The Node Security CLI supports adding exceptions. These are advisories that you have evaluated and personally deemed unimportant for your project.
