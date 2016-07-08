@@ -1,3 +1,16 @@
 engines:
   requiresafe:
     enabled: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - javascript
+  jshint:
+    enabled: true
+  fixme:
+    enabled: true
+ratings:
+  paths:
+  - "**.js"
+exclude_paths: ["test.js"]
