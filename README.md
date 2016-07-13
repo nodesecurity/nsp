@@ -159,3 +159,5 @@ Node Security (+) is brought to you by [^lift security](https://liftsecurity.io)
 
     See the License for the specific language governing permissions and
     limitations under the License.
+
+Note: the above text describes the license for the code located in this repository *only*. Usage of this tool or the API this tool accesses implies acceptance of our [terms of service](https://nodesecurity.io/tos).
