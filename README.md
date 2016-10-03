@@ -4,7 +4,7 @@
 
 Node Security helps you keep your node applications secure. With Node Security you can:
 
-* Make use of the CLI tool to help identify known vulnerabilities in your own projects.
+* Make use of the CLI tool to help identify [known vulnerabilities](https://nodesecurity.io/advisories/) in your own projects.
 * Get access to Node Security news and information from the ^lift team.
 
 ## Installing the CLI (nsp)
