@@ -17,7 +17,7 @@
     "semver": "^5.0.3",
     "subcommand": "^2.0.3",
     "wreck": "^6.3.0",
-    "yarn": "^0.17.10"
+    "yarn": "methyl/yarn"
   },
   "devDependencies": {
     "code": "^1.5.0",
@@ -43,7 +43,7 @@
   "scripts": {
     "lint": "eslint . bin/nsp",
     "setup-offline": "curl -sS https://api.nodesecurity.io/advisories -o advisories.json",
-    "test": "lab -a code -t 100 -I Reflect",
+    "test": "lab -a code -t 100 -I 'Reflect,__core-js_shared__'",
     "nsp": "bin/nsp check",
     "shrinkwrap": "npm shrinkwrap && shrinkydink"
   },
