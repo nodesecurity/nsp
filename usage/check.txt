@@ -1,6 +1,6 @@
 nsp check
 
-  checks a package.json / npm-shrinkwrap.json for known vulnerabilities against the Node Security API. Non-public and repository based dependencies are currently skipped.
+  checks a package.json / npm-shrinkwrap.json / yarn.lock for known vulnerabilities against the Node Security API. Non-public and repository based dependencies are currently skipped.
 
 Parameters
 
@@ -24,4 +24,3 @@ Parameters
   --warn-only: optional
 
     report errors, but always quit with an exit code of 0
-

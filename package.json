@@ -16,7 +16,8 @@
     "rc": "^1.1.2",
     "semver": "^5.0.3",
     "subcommand": "^2.0.3",
-    "wreck": "^6.3.0"
+    "wreck": "^6.3.0",
+    "yarn": "^0.17.10"
   },
   "devDependencies": {
     "code": "^1.5.0",

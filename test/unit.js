@@ -173,7 +173,24 @@ describe('check', function () {
     };
 
     Check(options, function (err, results) {
+      expect(err).to.not.exist();
+      expect(results).to.exist();
+      done();
+    });
+  });
 
+  it('works offline with yarn.lock', function (done) {
+
+    var options = {
+      package: workingOptions.package,
+      shrinkwrap: Path.resolve(__dirname, './data/not-existing.json'),
+      yarnlock: Path.resolve(__dirname, './data/yarn.lock'),
+      exceptions: exceptions,
+      advisoriesPath: './test/data/advisories.json',
+      offline: true
+    };
+
+    Check(options, function (err, results) {
       expect(err).to.not.exist();
       expect(results).to.exist();
       done();

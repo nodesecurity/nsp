@@ -1,0 +1,10 @@
+nsp@^2.0.0:
+  version "0.1.1"
+  dependencies:
+    marked "4.0.0"
+
+marked:
+  version "0.3.3"
+
+dummy:
+  version "0.0.0"
