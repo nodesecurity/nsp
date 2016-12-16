@@ -113,8 +113,8 @@ describe('check', function () {
   it('Responds correctly to receiving a 200 and findings for yarn', function (done) {
     var options = {
       package: workingOptions.package,
-      yarnlock: Path.resolve(__dirname, './data/yarn.lock'),
-    }
+      yarnlock: Path.resolve(__dirname, './data/yarn.lock')
+    };
 
     Nock('https://api.nodesecurity.io')
       .post('/check')
