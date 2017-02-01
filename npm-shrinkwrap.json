@@ -40,6 +40,9 @@
         }
       }
     },
+    "cvss": {
+      "version": "1.0.1"
+    },
     "https-proxy-agent": {
       "version": "1.0.0",
       "dependencies": {
