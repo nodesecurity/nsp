@@ -81,6 +81,7 @@ nsp has an offline mode which was previously undocumented. We recommend not rely
 First you need to obtain the offline advisories database. Do this by running the `npm run setup-offline` script provided by nsp
 
 Second you need to tell nsp where to find that file. You can do that 3 ways.
+
 1. Put it in the actual nsp module folder and no other configuration is required
 1. Specify it in the .nsprc configuration file `advisoriesPath: "/path/to/advisories.json"`
 1. Specify it from the command line when you call nsp `nsp check --offline --advisoriesPath=/path/to/advisories.json`
@@ -90,6 +91,22 @@ When you call nsp check you will want to use the --offline flag
 A couple of notes
 - Offline mode requires that your project include a npm-shrinkwrap.json file.
 - Because of npm3 flattening reported paths may be incorrect.
+
+## Fail silently when service unavailable
+When integrating nsp into a CI pipeline, it may be desirable to fail silently if the nsp service becomes unavailable, so that builds do not fail due to lack of network.
+
+You can enable this in two ways:
+
+1. Specify it in the .nsprc configuration file:
+
+```js
+{
+    "ignoreServiceInterruptions": true
+}
+```
+
+2. Specify it from the command line when you call nsp: `nsp check --ignoreServiceInterruptions`
+
 
 ## Code Climate Node Security Engine
 
