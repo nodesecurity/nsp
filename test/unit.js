@@ -236,12 +236,13 @@ describe('check', function () {
       proxy: 'http://127.0.0.1:8080'
     };
 
-    Nock('http://127.0.0.1:8080')
+    Nock('https://api.nodesecurity.io')
       .post('/check')
       .reply(200);
 
     Check(options, function (err, results) {
 
+      expect(err).to.not.exist();
       done();
     });
   });
@@ -255,12 +256,31 @@ describe('check', function () {
       shrinkwrap: workingOptions.shrinkwrap
     };
 
-    Nock('http://127.0.0.1:8080')
+    Nock('https://api.nodesecurity.io')
       .post('/check')
       .reply(200);
 
     Check(options, function (err, results) {
 
+      expect(err).to.not.exist();
+      done();
+    });
+  });
+
+  it('Does not fail if env var sets empty string for proxy', function (done) {
+
+    process.env.https_proxy = process.env.HTTPS_PROXY = '';
+
+    var options = {
+      package: workingOptions.package,
+      shrinkwrap: workingOptions.shrinkwrap
+    };
+
+    Check(options, function (err, results) {
+
+      expect(err).to.not.exist();
+      delete process.env.https_proxy;
+      delete process.env.HTTPS_PROXY;
       done();
     });
   });
