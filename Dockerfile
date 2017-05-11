@@ -1,12 +1,20 @@
-FROM alpine:edge
+FROM node:7.10-alpine
 
-WORKDIR /code
-ADD . /app
+WORKDIR /usr/src/app
 
-RUN apk --update add nodejs curl && \
-    npm install -g npm && \
-    cd /app && \
+COPY package.json ./
+
+RUN apk --update add curl && \
     npm install && \
     npm run setup-offline
 
-CMD ["/app/bin/nsp", "check", "--offline", "--warn-only", "-o", "codeclimate"]
+RUN adduser -u 9000 -D app
+COPY . ./
+RUN chown -R app:app ./
+
+USER app
+
+VOLUME /code
+WORKDIR /code
+
+CMD ["/usr/src/app/bin/nsp", "check", "--offline", "--warn-only", "--output", "codeclimate"]
