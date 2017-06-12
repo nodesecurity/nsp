@@ -14,7 +14,7 @@
     "joi": "^6.9.1",
     "nodesecurity-npm-utils": "^5.0.0",
     "path-is-absolute": "^1.0.0",
-    "rc": "^1.1.2",
+    "rc": "^1.2.1",
     "semver": "^5.0.3",
     "subcommand": "^2.0.3",
     "wreck": "^6.3.0"
