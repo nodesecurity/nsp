@@ -1,17 +1,18 @@
-build:
-  image: node:$$NODE_VERSION
-  commands:
-    - npm install
-    - npm run lint
-    - npm test
+pipeline:
+  build:
+    image: node:${NODE_VERSION}
+    commands:
+      - npm install
+      - npm run lint
+      - npm test
+  slack:
+    image: plugins/slack
+    username: drone
+    channel: alerts
+    secrets: [ slack_webhook ]
 matrix:
   NODE_VERSION:
     - 0.10
     - 0.12
     - 4
     - 5
-notify:
-  slack:
-    webhook_url: $$SLACK_HOOK
-    channel: alerts
-    username: drone
