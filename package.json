@@ -43,9 +43,8 @@
   "scripts": {
     "lint": "eslint . bin/nsp",
     "setup-offline": "curl -sS https://api.nodesecurity.io/advisories -o advisories.json",
-    "test": "lab -a code -t 100 -I Reflect",
-    "nsp": "bin/nsp check",
-    "shrinkwrap": "npm shrinkwrap && shrinkydink"
+    "test": "lab -a code -t 100 -I Reflect,WebAssembly",
+    "nsp": "bin/nsp check"
   },
   "pre-commit": [
     "test"
