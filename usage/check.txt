@@ -25,3 +25,7 @@ Parameters
 
     report errors, but always quit with an exit code of 0
 
+  --packagePath: optional
+
+    Define fully qualified file path of the package.json file.
+    E.x: nsp check --packagePath=/home/hostname/Desktop/exampleRepo/package.json
