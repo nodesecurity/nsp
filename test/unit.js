@@ -24,6 +24,15 @@ var exceptions = ['https://nodesecurity.io/advisories/39', 'https://nodesecurity
 
 describe('check', function () {
 
+  it('Errors when schema is bad', function (done) {
+
+    Check({ notallowed: './package.json' }, function (err) {
+
+      expect(err.message).to.equal('"notallowed" is not allowed');
+      done();
+    });
+  });
+
   it('Responds correctly when package.json can\'t be found', function (done) {
 
     Check({ package: './package.json' }, function (err) {
@@ -77,7 +86,7 @@ describe('check', function () {
 
     Check({ package: undefined, shrinkwrap: undefined }, function (err) {
 
-      expect(err.message).to.equal('"value" must contain at least one of [package, shrinkwrap]');
+      expect(err.message).to.equal('package.json is required');
       done();
     });
   });
@@ -117,6 +126,34 @@ describe('check', function () {
       .reply(200, Findings);
 
     Check({ package: require(workingOptions.package), shrinkwrap: require(workingOptions.shrinkwrap) }, function (err, results) {
+
+      expect(err).to.not.exist();
+      expect(results).to.deep.include(Findings);
+      done();
+    });
+  });
+
+  it('Handles package as object and package-lock as path', function (done) {
+
+    Nock('https://api.nodesecurity.io')
+      .post('/check')
+      .reply(200, Findings);
+
+    Check({ package: require(Path.resolve(__dirname, './data/package.json')), packagelock: Path.resolve(__dirname, './data/package-lock.json') }, function (err, results) {
+
+      expect(err).to.not.exist();
+      expect(results).to.deep.include(Findings);
+      done();
+    });
+  });
+
+  it('Handles package-lock as path but not found', function (done) {
+
+    Nock('https://api.nodesecurity.io')
+      .post('/check')
+      .reply(200, Findings);
+
+    Check({ package: require(Path.resolve(__dirname, './data/package.json')), packagelock: Path.resolve(__dirname, './data/package-lock-not-found.json') }, function (err, results) {
 
       expect(err).to.not.exist();
       expect(results).to.deep.include(Findings);
@@ -198,22 +235,22 @@ describe('check', function () {
     });
   });
 
-  it('works offline with shrinkwrap object', function (done) {
+  // it('works offline with shrinkwrap object', function (done) {
 
-    var options = {
-      shrinkwrap: require(workingOptions.shrinkwrap),
-      exceptions: exceptions,
-      advisoriesPath: Path.resolve(process.cwd(), './test/data/advisories.json'),
-      offline: true
-    };
+  //   var options = {
+  //     shrinkwrap: require(workingOptions.shrinkwrap),
+  //     exceptions: exceptions,
+  //     advisoriesPath: Path.resolve(process.cwd(), './test/data/advisories.json'),
+  //     offline: true
+  //   };
 
-    Check(options, function (err, results) {
+  //   Check(options, function (err, results) {
 
-      expect(err).to.not.exist();
-      expect(results).to.exist();
-      done();
-    });
-  });
+  //     expect(err).to.not.exist();
+  //     expect(results).to.exist();
+  //     done();
+  //   });
+  // });
 
   it('Responds correctly to validation errors', function (done) {
 
@@ -223,7 +260,7 @@ describe('check', function () {
 
     Check(function (err, results) {
 
-      expect(err.message).to.equal('"value" must contain at least one of [package, shrinkwrap]');
+      expect(err.message).to.equal('package.json is required');
       done();
     });
   });
