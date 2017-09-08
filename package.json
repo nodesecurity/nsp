@@ -1,7 +1,7 @@
 {
   "name": "nsp",
   "description": "The Node Security (nodesecurity.io) command line interface",
-  "version": "2.6.2",
+  "version": "2.8.0",
   "author": "^lift security",
   "bin": {
     "nsp": "bin/nsp"
@@ -9,6 +9,7 @@
   "dependencies": {
     "chalk": "^1.1.1",
     "cli-table": "^0.3.1",
+    "cvss": "^1.0.0",
     "https-proxy-agent": "^1.0.0",
     "joi": "^6.9.1",
     "nodesecurity-npm-utils": "^5.0.0",
@@ -43,9 +44,8 @@
   "scripts": {
     "lint": "eslint . bin/nsp",
     "setup-offline": "curl -sS https://api.nodesecurity.io/advisories -o advisories.json",
-    "test": "lab -a code -t 100 -I 'Reflect,__core-js_shared__'",
-    "nsp": "bin/nsp check",
-    "shrinkwrap": "npm shrinkwrap && shrinkydink"
+    "test": "lab -a code -t 100 -I 'Reflect,__core-js_shared__,WebAssembly'",
+    "nsp": "bin/nsp check"
   },
   "pre-commit": [
     "test"

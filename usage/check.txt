@@ -11,6 +11,7 @@ Parameters
         summary
         json
         codeclimate
+        quiet
         none (does what you think it does)
 
   --offline: optional

@@ -1,4 +1,5 @@
-# nsp [![Build Status](https://drone.andyet.com/api/badges/nodesecurity/nsp/status.svg)](https://drone.andyet.com/nodesecurity/nsp)
+# nsp 
+[![Build Status](https://build.andyet.com/api/badges/nodesecurity/nsp/status.svg)](https://build.andyet.com/nodesecurity/nsp)
 
 ## About Node Security
 
@@ -138,6 +139,10 @@ codeclimate analyze --dev
 
 ## Suggesting Changes to Advisories
 Should you come across data in an advisory that you feel is wrong or is a false positive please let us know at report@nodesecurity.io. We endeavor to make this process better in the future, however this is the best place to resolve these issues at the present.
+
+## Continuous Security Monitoring
+Want continuous security monitoring of your projects? Check out [nodesecurity.io](https://nodesecurity.io).
+
 
 ## Contact
 
