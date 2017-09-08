@@ -3,6 +3,11 @@ nsp@^2.0.0:
   dependencies:
     marked "4.0.0"
 
+nsp@^2.0.1:
+  version "0.1.1"
+  dependencies:
+    marked "4.0.0"
+
 marked:
   version "0.3.3"
 

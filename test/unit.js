@@ -120,6 +120,7 @@ describe('check', function () {
   });
 
   it('Responds correctly to receiving a 200 and findings for yarn', function (done) {
+
     var options = {
       package: workingOptions.package,
       yarnlock: Path.resolve(__dirname, './data/yarn.lock')
@@ -228,6 +229,7 @@ describe('check', function () {
     };
 
     Check(options, function (err, results) {
+
       expect(err).to.not.exist();
       expect(results).to.exist();
       done();
@@ -246,6 +248,7 @@ describe('check', function () {
     };
 
     Check(options, function (err, results) {
+
       expect(err).to.not.exist();
       expect(results).to.exist();
       done();
