@@ -7,6 +7,7 @@
     "nsp": "bin/nsp"
   },
   "dependencies": {
+    "@yarnpkg/lockfile": "^1.0.0",
     "chalk": "^1.1.1",
     "cli-table": "^0.3.1",
     "cvss": "^1.0.0",
@@ -43,7 +44,7 @@
   "scripts": {
     "lint": "eslint . bin/nsp",
     "setup-offline": "curl -sS https://api.nodesecurity.io/advisories -o advisories.json",
-    "test": "lab -a code -t 100 -I Reflect,WebAssembly",
+    "test": "lab -a code -t 100 -I 'Reflect,__core-js_shared__,WebAssembly'",
     "nsp": "bin/nsp check"
   },
   "pre-commit": [

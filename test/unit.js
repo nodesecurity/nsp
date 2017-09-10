@@ -1,5 +1,6 @@
 'use strict';
 
+var Fs = require('fs');
 var Code = require('code');
 var Lab = require('lab');
 var Nock = require('nock');
@@ -7,6 +8,7 @@ var Path = require('path');
 var Check = require('../lib/check.js');
 var Pkg = require('../package.json');
 var SanitizePackage = require('../lib/utils/sanitizePackage.js');
+var Yarn = require('../lib/utils/yarn.js');
 
 var lab = exports.lab = Lab.script();
 var describe = lab.describe;
@@ -55,7 +57,7 @@ describe('check', function () {
 
     Check({ package: '../package.json', shrinkwrap: './npm-shrinkwrap.json', offline: true }, function (err) {
 
-      expect(err.message).to.equal('npm-shrinkwrap.json is required for offline mode');
+      expect(err.message).to.equal('npm-shrinkwrap.json / yarn.lock is required for offline mode');
       done();
     });
   });
@@ -91,6 +93,33 @@ describe('check', function () {
     });
   });
 
+  it('Responds correctly to yarn.lock being outdated', function (done) {
+
+    Check({
+      package: workingOptions.package,
+      yarnlock: Path.resolve(__dirname, './data/yarn.outdated.lock')
+    }, function (err) {
+
+      var expected = 'yarn.lock is outdated';
+      expect(err.message.substr(0, expected.length)).to.equal(expected);
+      done();
+    });
+  });
+
+  it('Responds correctly to yarn.lock with circular (dev) dependencies', function (done) {
+
+    try {
+      Yarn.parse(
+        Fs.readFileSync(Path.resolve(__dirname, './data/yarn.circular.lock'), { encoding: 'utf8' }),
+        SanitizePackage(require(Path.resolve(__dirname, './data/package.json')))
+      );
+      done();
+    }
+    catch (err) {
+      expect(err).to.not.exist();
+    }
+  });
+
   it('Responds correctly to receiving a 200 but no findings', function (done) {
 
     Nock('https://api.nodesecurity.io')
@@ -112,6 +141,25 @@ describe('check', function () {
       .reply(200, Findings);
 
     Check(workingOptions, function (err, results) {
+
+      expect(err).to.not.exist();
+      expect(results).to.deep.include(Findings);
+      done();
+    });
+  });
+
+  it('Responds correctly to receiving a 200 and findings for yarn', function (done) {
+
+    var options = {
+      package: workingOptions.package,
+      yarnlock: Path.resolve(__dirname, './data/yarn.lock')
+    };
+
+    Nock('https://api.nodesecurity.io')
+      .post('/check')
+      .reply(200, Findings);
+
+    Check(options, function (err, results) {
 
       expect(err).to.not.exist();
       expect(results).to.deep.include(Findings);
@@ -204,6 +252,25 @@ describe('check', function () {
     var options = {
       package: workingOptions.package,
       shrinkwrap: workingOptions.shrinkwrap,
+      exceptions: exceptions,
+      advisoriesPath: './test/data/advisories.json',
+      offline: true
+    };
+
+    Check(options, function (err, results) {
+
+      expect(err).to.not.exist();
+      expect(results).to.exist();
+      done();
+    });
+  });
+
+  it('works offline with yarn.lock', function (done) {
+
+    var options = {
+      package: workingOptions.package,
+      shrinkwrap: Path.resolve(__dirname, './data/not-existing.json'),
+      yarnlock: Path.resolve(__dirname, './data/yarn.lock'),
       exceptions: exceptions,
       advisoriesPath: './test/data/advisories.json',
       offline: true

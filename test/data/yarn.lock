@@ -1,0 +1,30 @@
+nsp@^2.0.0:
+  version "0.1.1"
+  dependencies:
+    marked "4.0.0"
+    request "^2.79"
+
+nsp@^2.0.1:
+  version "0.1.1"
+  dependencies:
+    marked "4.0.0"
+    request "^2.81.0"
+
+marked@0.3.3:
+  version "0.3.3"
+  dependencies:
+    request "~2.9.1"
+
+marked@4.0.0:
+  version "4.0.0"
+  dependencies:
+    request "~2.9.1"
+
+dummy@0.0.0:
+  version "0.0.0"
+
+request@~2.9.1:
+  version "2.9.202"
+
+request@2.81.0, request@^2.79, request@^2.81.0:
+  version "2.81.0"

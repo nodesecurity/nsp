@@ -89,14 +89,14 @@ Second you need to tell nsp where to find that file. You can do that 3 ways.
 When you call nsp check you will want to use the --offline flag
 
 A couple of notes
-- Offline mode requires that your project include a npm-shrinkwrap.json file.
+- Offline mode requires that your project include a npm-shrinkwrap.json or yarn.lock file.
 - Because of npm3 flattening reported paths may be incorrect.
 
 ## Code Climate Node Security Engine
 
 `codeclimate-nodesecurity` is a Code Climate engine that wraps the Node Security CLI. You can run it on your command line using the Code Climate CLI, or Code Climate's <a href="http://codeclimate.com">hosted analysis platform</a>.
 
-Note that this engine *only* works if your code has a `npm-shrinkwrap.json` file committed.
+Note that this engine *only* works if your code has a `npm-shrinkwrap.json` or `yarn.lock` file committed.
 
 ### Testing
 

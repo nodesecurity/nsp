@@ -1,0 +1,43 @@
+nsp@^2.0.0:
+  version "0.1.1"
+  dependencies:
+    marked "4.0.0"
+    request "^2.79"
+    babel-core "^6.0.0"
+
+nsp@^2.0.1:
+  version "0.1.1"
+  dependencies:
+    marked "4.0.0"
+    request "^2.81.0"
+
+marked@0.3.3:
+  version "0.3.3"
+  dependencies:
+    request "~2.9.1"
+
+marked@4.0.0:
+  version "4.0.0"
+  dependencies:
+    request "~2.9.1"
+
+dummy@0.0.0:
+  version "0.0.0"
+
+request@~2.9.1:
+  version "2.9.202"
+
+request@2.81.0, request@^2.79, request@^2.81.0:
+  version "2.81.0"
+
+babel-core@^6.0.0, babel-core@^6.24.1, babel-core@^6.26.0:
+  version "6.26.0"
+  resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.26.0.tgz#af32f78b31a6fcef119c87b0fd8d9753f03a0bb8"
+  dependencies:
+    babel-register "^6.26.0"
+
+babel-register@^6.26.0:
+  version "6.26.0"
+  resolved "https://registry.yarnpkg.com/babel-register/-/babel-register-6.26.0.tgz#6ed021173e2fcb486d7acb45c6009a856f647071"
+  dependencies:
+    babel-core "^6.26.0"
