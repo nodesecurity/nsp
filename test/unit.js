@@ -90,13 +90,14 @@ describe('check', function () {
       done();
     });
   });
-  
+
   it('Responds correctly to yarn.lock being outdated', function (done) {
 
-    Check({ 
-      package: workingOptions.package, 
+    Check({
+      package: workingOptions.package,
       yarnlock: Path.resolve(__dirname, './data/yarn.outdated.lock')
     }, function (err) {
+
       var expected = 'yarn.lock is outdated';
       expect(err.message.substr(0, expected.length)).to.equal(expected);
       done();
