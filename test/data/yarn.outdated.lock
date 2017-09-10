@@ -10,11 +10,6 @@ nsp@^2.0.1:
     marked "4.0.0"
     request "^2.81.0"
 
-marked@0.3.3:
-  version "0.3.3"
-  dependencies:
-    request "~2.9.1"
-
 marked@4.0.0:
   version "4.0.0"
   dependencies:
