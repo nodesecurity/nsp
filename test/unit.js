@@ -1,5 +1,6 @@
 'use strict';
 
+var Fs = require('fs');
 var Code = require('code');
 var Lab = require('lab');
 var Nock = require('nock');
@@ -7,6 +8,7 @@ var Path = require('path');
 var Check = require('../lib/check.js');
 var Pkg = require('../package.json');
 var SanitizePackage = require('../lib/utils/sanitizePackage.js');
+var Yarn = require('../lib/utils/yarn.js');
 
 var lab = exports.lab = Lab.script();
 var describe = lab.describe;
@@ -102,6 +104,19 @@ describe('check', function () {
       expect(err.message.substr(0, expected.length)).to.equal(expected);
       done();
     });
+  });
+
+  it('Responds correctly to yarn.lock with circular (dev) dependencies', function (done) {
+
+    try {
+      Yarn.parse(
+        Fs.readFileSync(Path.resolve(__dirname, './data/yarn.circular.lock'), { encoding: 'utf8' }),
+        SanitizePackage(require(Path.resolve(__dirname, './data/package.json')))
+      );
+      done();
+    } catch (err) {
+      expect(err).to.not.exist();
+    }
   });
 
   it('Responds correctly to receiving a 200 but no findings', function (done) {
