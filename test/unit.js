@@ -114,7 +114,8 @@ describe('check', function () {
         SanitizePackage(require(Path.resolve(__dirname, './data/package.json')))
       );
       done();
-    } catch (err) {
+    }
+    catch (err) {
       expect(err).to.not.exist();
     }
   });
