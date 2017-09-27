@@ -26,3 +26,8 @@ Parameters
 
     report errors, but always quit with an exit code of 0
 
+  --warn-threshold: optional
+
+    quit with an non-zero exit code only if the CVSS score of one or more vulnerabilities is higher
+    that the given value (allowed values are numbers between 1 and 10 or string critical, high, medium or low)
+
