@@ -79,7 +79,7 @@ To configure the proxy set the proxy key in your `.nsprc` file. This can be put 
 ## Offline Mode
 nsp has an offline mode which was previously undocumented. We recommend not relying on offline support as it may become unsupported in the future as new features are added.
 
-First you need to obtain the offline advisories database. Do this by running the `npm run setup-offline` script provided by nsp
+First you need to obtain the offline advisories database. Do this by running the `npm run setup-offline` script provided by nsp. If you only needs the 100 most recent advisories, run `npm run recent-offline` script instead.
 
 Second you need to tell nsp where to find that file. You can do that 3 ways.
 1. Put it in the actual nsp module folder and no other configuration is required

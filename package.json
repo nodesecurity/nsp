@@ -42,7 +42,8 @@
   },
   "scripts": {
     "lint": "eslint . bin/nsp",
-    "setup-offline": "curl -sS https://api.nodesecurity.io/advisories -o advisories.json",
+    "recent-offline": "curl -sS https://api.nodesecurity.io/advisories -o advisories.json",
+    "setup-offline": "cd merging/ && node download_advisories.js && node merge_advisories.js",
     "test": "lab -a code -t 100 -I Reflect,WebAssembly",
     "nsp": "bin/nsp check"
   },
