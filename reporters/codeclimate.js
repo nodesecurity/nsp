@@ -43,19 +43,18 @@ exports.check.success = function (result, args) {
     return;
   }
 
-  const path = args.path ? Path.resolve(args.path) : process.cwd();
   let filename = 'npm-shrinkwrap.json';
 
   let data;
   try {
-    data = Fs.readFileSync(Path.join(path, 'npm-shrinkwrap.json'), 'utf8');
+    data = Fs.readFileSync(Path.join(args.path, 'npm-shrinkwrap.json'), 'utf8');
   }
   catch (err) {
   }
 
   if (!data) {
     filename = 'package-lock.json';
-    data = Fs.readFileSync(Path.join(path, 'package-lock.json'), 'utf8');
+    data = Fs.readFileSync(Path.join(args.path, 'package-lock.json'), 'utf8');
   }
 
   result.data.forEach((finding) => {

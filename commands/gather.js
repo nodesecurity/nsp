@@ -30,10 +30,7 @@ exports.builder = {
 
 exports.handler = Command.wrap('gather', function (args) {
 
-  let path = args.path ? Path.resolve(args.path) : process.cwd();
-  if (!path.endsWith('advisories.json')) {
-    path = Path.join(path, 'advisories.json');
-  }
+  let path = args.path.endsWith('advisories.json') ? args.path : Path.join(args.path, 'advisories.json');
 
   return internals.fetch(args.baseUrl).then((items) => {
 
