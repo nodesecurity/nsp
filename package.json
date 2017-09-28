@@ -26,6 +26,7 @@
     "eslint-plugin-hapi": "^1.2.2",
     "git-validate": "^2.1.0",
     "lab": "^6.2.0",
+    "mockery": "^2.1.0",
     "nock": "^7.7.2",
     "shrinkydink": "^1.0.0"
   },
