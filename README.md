@@ -12,24 +12,24 @@ Node Security helps you keep your node applications secure. With Node Security y
 * To install the Node Security command line tool: `npm install -g nsp`
 * Then run `nsp --help` to find out more.
 
-## Output Format
+## Output Reporters
 
-You can adjust how the client outputs findings by specifying one of the following format options:
+You can adjust how the client outputs findings by specifying one of the following built in reporters:
 
-- default
+- table
 - summary
 - json
 - codeclimate
-- none
+- minimal
 
-Example: `nsp check --output summary`
+Example: `nsp check --reporter summary`
 
-Additionally, you can use [third-party formatters](https://www.npmjs.com/search?q=nsp+formatter). The packages of custom formatters must adhere to the naming scheme `nsp-formatter-<name>` and can then be referenced by that name:
+Additionally, you can use [third-party reporter](https://www.npmjs.com/search?q=nsp+reporter). The packages of custom reporters must adhere to the naming scheme `nsp-reporter-<name>` and can then be referenced by that name:
 ```bash
-$ npm install -g nsp nsp-formatter-checkstyle
-$ nsp check --output checkstyle
+$ npm install -g nsp nsp-reporter-checkstyle
+$ nsp check --reporter checkstyle
 ```
-Please note that in case of naming conflicts built-in formatters (as listed above) take precedence. For instance, `nsp-formatter-json` would never be used since nsp ships with a `json` formatter.
+Please note that in case of naming conflicts built-in reporters (as listed above) take precedence. For instance, `nsp-reporter-json` would never be used since nsp ships with a `json` formatter.
 
 ## Exceptions
 
@@ -75,27 +75,15 @@ To configure the proxy set the proxy key in your `.nsprc` file. This can be put 
 }
 ```
 
-## Offline Mode
-nsp has an offline mode which was previously undocumented. We recommend not relying on offline support as it may become unsupported in the future as new features are added.
+## Offline mode
 
-First you need to obtain the offline advisories database. Do this by running the `npm run setup-offline` script provided by nsp
-
-Second you need to tell nsp where to find that file. You can do that 3 ways.
-1. Put it in the actual nsp module folder and no other configuration is required
-1. Specify it in the .nsprc configuration file `advisoriesPath: "/path/to/advisories.json"`
-1. Specify it from the command line when you call nsp `nsp check --offline --advisoriesPath=/path/to/advisories.json`
-
-When you call nsp check you will want to use the --offline flag
-
-A couple of notes
-- Offline mode requires that your project include a npm-shrinkwrap.json file.
-- Because of npm3 flattening reported paths may be incorrect.
+Run `nsp gather` to save `advisories.json` locally, then `nsp check --offline` or `nsp check --offline --advisories /path/to/advisories.json`
 
 ## Code Climate Node Security Engine
 
 `codeclimate-nodesecurity` is a Code Climate engine that wraps the Node Security CLI. You can run it on your command line using the Code Climate CLI, or Code Climate's <a href="http://codeclimate.com">hosted analysis platform</a>.
 
-Note that this engine *only* works if your code has a `npm-shrinkwrap.json` file committed.
+Note that this engine *only* works if your code has a `npm-shrinkwrap.json` or `package-lock.json` file committed.
 
 ### Testing
 

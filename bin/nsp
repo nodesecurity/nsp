@@ -18,21 +18,30 @@
 
 'use strict';
 
-var Subcommand = require('subcommand');
-var usage = require('../lib/utils/usage.js')('root.txt');
+const Yargs = require('yargs');
 
-var config = {
-  root: require('../lib/commands/root.js'),
-  commands: [
-    require('../lib/commands/check.js')
-  ],
-  defaults: require('../lib/commands/defaults.js'),
-  none: function (args) {
-
-    usage();
-    process.exit(1);
-  }
-};
-
-var route = Subcommand(config);
-route(process.argv.slice(2));
+Yargs
+  .option('baseUrl')
+  .option('proxy', {
+    description: 'https proxy to be used for API calls',
+    default: process.env.https_proxy || process.env.HTTPS_PROXY
+  })
+  .option('reporter', {
+    description: 'output reporter',
+    default: 'table'
+  })
+  .option('verbose', {
+    description: 'provide more verbose output',
+    boolean: true
+  })
+  .option('quiet', {
+    description: 'suppress output',
+    boolean: true
+  })
+  .option('ignore-server-errors', {
+    description: 'do not exit with an error code when errors are due to server problems'
+  })
+  .commandDir('../commands')
+  .demandCommand()
+  // .wrap(Yargs.terminalWidth() > 240 ? Yargs.terminalWidth() / 2 : 120)
+  .parse();
