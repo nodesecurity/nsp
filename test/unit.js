@@ -33,7 +33,7 @@ describe('check', function () {
     });
   });
 
-  it('Responds correctly when package.json can\'t be found', function (done) {
+  it('Responds correctly when package.json cannot be found', function (done) {
 
     Check({ package: './package.json' }, function (err) {
 
@@ -42,7 +42,7 @@ describe('check', function () {
     });
   });
 
-  it('Responds correctly when offline and can\' find a local advisories.json', function (done) {
+  it('Responds correctly when offline and cannot find a local advisories.json', function (done) {
 
     Check({ package: '../package.json', shrinkwrap: '../npm-shrinkwrap.json', offline: true }, function (err) {
 
@@ -51,7 +51,7 @@ describe('check', function () {
     });
   });
 
-  it('Responds correctly when offline and can\'t find a npm-shrinkwrap.json', function (done) {
+  it('Responds correctly when offline and cannot find a npm-shrinkwrap.json', function (done) {
 
     Check({ package: '../package.json', shrinkwrap: './npm-shrinkwrap.json', offline: true }, function (err) {
 
