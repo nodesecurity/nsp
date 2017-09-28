@@ -12,7 +12,5 @@ pipeline:
     secrets: [ slack_webhook ]
 matrix:
   NODE_VERSION:
-    - 0.10
-    - 0.12
-    - 4
-    - 5
+    - 6
+    - 8
