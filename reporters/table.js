@@ -17,19 +17,18 @@ exports.success = function (result) {
 exports.check = {};
 exports.check.success = function (result) {
 
-  if (result.data.length === 0) {
-    return console.log(Chalk.green('(+)'), 'No known vulnerabilities found');
+  if (!result.data.length) {
+    return console.log(Chalk.green('(+)'), result.message);
   }
 
-  console.log(Chalk.red('(+)'), result.data.length, result.data.length === 1 ? 'vulnerability found' : 'vulnerabilities found');
+  console.log(Chalk.red('(+)'), result.message);
 
-  result.data.sort(function(a, b) {
-
-    return b.cvss_score - a.cvss_score;
-  }).forEach(function (finding) {
+  result.data.forEach(function (finding) {
 
     const table = new Table({
-      head: ['', finding.title]
+      head: ['', finding.title],
+      colWidths: [12, 68],
+      wordWrap: true
     });
 
     table.push(['Name', finding.module]);

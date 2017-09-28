@@ -17,10 +17,10 @@ exports.check = {};
 exports.check.success = function (result, args) {
 
   if (!result.data.length) {
-    return console.log(Chalk.green('(+)'), 'No known vulnerabilities found');
+    return console.log(Chalk.green('(+)'), result.message);
   }
 
-  console.log(Chalk.red('(+)'), result.data.length, result.data.length === 1 ? 'vulnerability found' : 'vulnerabilities found');
+  console.log(Chalk.red('(+)'), result.message);
 
   const table = new Table({
     head: ['Name', 'Installed', 'Patched', 'Path', 'More Info'],

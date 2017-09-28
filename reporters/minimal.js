@@ -10,7 +10,8 @@ exports.error = function (err) {
 exports.success = function (result) {
 
   if (result.data.length) {
-    return console.log(Chalk.red('(+)'), result.data.length, result.data.length === 1 ? 'vulnerability found' : 'vulnerabilities found');
+    return console.log(Chalk.red('(+)'), result.message);
   }
-  console.log(Chalk.green('(+)'), 'No known vulnerabilities found');
+
+  console.log(Chalk.green('(+)'), result.message);
 };
