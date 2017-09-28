@@ -31,6 +31,11 @@ exports.builder = {
   filter: {
     description: 'cvss score below which findings will be hidden',
     type: 'number'
+  },
+  exceptions: {
+    type: 'array',
+    description: 'advisories to ignore while running this check',
+    default: []
   }
 };
 
@@ -60,7 +65,7 @@ exports.handler = Command.wrap('check', function (args) {
   let check;
   if (!args.offline) {
     const api = new API(args);
-    check = api.check({ package: pkg, shrinkwrap, packagelock });
+    check = api.check({ package: pkg, shrinkwrap, packagelock, exceptions: args.exceptions });
   }
   else {
     let advisories;
@@ -76,8 +81,7 @@ exports.handler = Command.wrap('check', function (args) {
       return Promise.reject(new Error('Unable to load local advisories database'));
     }
 
-    let exceptions = args.exceptions || [];
-    check = Offline.check({ package: pkg, shrinkwrap, packagelock, advisories, exceptions });
+    check = Offline.check({ package: pkg, shrinkwrap, packagelock, advisories, exceptions: args.exceptions });
   }
 
   return check.then((results) => {
