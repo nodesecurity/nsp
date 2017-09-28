@@ -26,3 +26,11 @@ Parameters
 
     report errors, but always quit with an exit code of 0
 
+  --warn-unpatched: optional
+
+    report errors, but quit with an exit code of 0 if no patched version exists
+
+  --warn-score: optional
+
+    report errors, but quit with an exit code of 0 if CVSS score is below the specified value
+
