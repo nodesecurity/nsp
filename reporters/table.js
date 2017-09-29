@@ -6,12 +6,12 @@ const Cvss = require('cvss');
 
 exports.error = function (err) {
 
-  console.error(Chalk.yellow('(+) ') + err);
+  console.error(Chalk.yellow('(+)'), err.message);
 };
 
 exports.success = function (result) {
 
-  console.log(Chalk.green('(+) ') + result.message);
+  console.log(Chalk.green('(+)'), result.message);
 };
 
 exports.check = {};
