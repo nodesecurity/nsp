@@ -5,7 +5,7 @@ var Table = require('cli-table2');
 
 exports.error = function (err, args) {
 
-  console.error(Chalk.yellow('(+)'), err);
+  console.error(Chalk.yellow('(+)'), err.message, err.statusCode === 400 && err.data.message);
 };
 
 exports.success = function (result, args) {
