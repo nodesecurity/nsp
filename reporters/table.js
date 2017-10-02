@@ -6,7 +6,7 @@ const Cvss = require('cvss');
 
 exports.error = function (err) {
 
-  console.error(Chalk.yellow('(+)'), err.message, err.statusCode === 400 && err.data.message);
+  console.error(Chalk.yellow('(+)'), err.message);
 };
 
 exports.success = function (result) {
