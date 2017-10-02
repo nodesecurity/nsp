@@ -24,7 +24,8 @@ exports.description = 'gathers current advisories into a json file for offline c
 
 exports.builder = {
   path: {
-    description: 'location to save advisories database'
+    description: 'location to save advisories database',
+    group: 'Locations:'
   }
 };
 
