@@ -11,6 +11,7 @@
     "cli-table2": "^0.2.0",
     "cvss": "^1.0.2",
     "https-proxy-agent": "^2.1.0",
+    "inquirer": "^3.3.0",
     "nodesecurity-npm-utils": "^6.0.0",
     "semver": "^5.4.1",
     "wreck": "^12.5.1",
