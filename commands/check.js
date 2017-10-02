@@ -14,23 +14,29 @@ exports.builder = {
   'warn-only': {
     boolean: true,
     default: false,
-    description: 'display vulnerabilities but do not exit with an error code'
+    description: 'display vulnerabilities but do not exit with an error code',
+    group: 'Output:'
   },
   offline: {
     boolean: true,
-    description: 'execute checks without an internet connection'
+    description: 'execute checks without an internet connection',
+    group: 'Offline:'
   },
   advisories: {
-    description: 'path to local advisories database used in offline checks'
+    description: 'path to local advisories database used in offline checks',
+    group: 'Offline:'
   },
   'cvss-threshold': {
     alias: 'threshold',
     description: 'cvss threshold that must be reached in order to exit with an error',
-    type: 'number'
+    type: 'number',
+    group: 'Output:'
   },
-  filter: {
+  'cvss-filter': {
+    alias: 'filter',
     description: 'cvss score below which findings will be hidden',
-    type: 'number'
+    type: 'number',
+    group: 'Output:'
   },
   exceptions: {
     type: 'array',

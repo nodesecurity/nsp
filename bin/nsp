@@ -24,22 +24,31 @@ Yargs
   .option('baseUrl')
   .option('proxy', {
     description: 'https proxy to be used for API calls',
-    default: process.env.https_proxy || process.env.HTTPS_PROXY
+    default: process.env.https_proxy || process.env.HTTPS_PROXY,
+    group: 'Connection:'
   })
   .option('reporter', {
     description: 'output reporter',
-    default: 'table'
+    default: 'table',
+    group: 'Output:'
   })
   .option('verbose', {
     description: 'provide more verbose output',
-    boolean: true
+    boolean: true,
+    group: 'Output:'
   })
   .option('quiet', {
     description: 'suppress output',
-    boolean: true
+    boolean: true,
+    group: 'Output:'
   })
   .option('ignore-server-errors', {
-    description: 'do not exit with an error code when errors are due to server problems'
+    description: 'do not exit with an error code when errors are due to server problems',
+    group: 'Output:'
+  })
+  .option('token', {
+    description: 'authentication token used to make api requests',
+    group: 'Connection:'
   })
   .commandDir('../commands')
   .demandCommand()
