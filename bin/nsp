@@ -53,5 +53,5 @@ Yargs
   .commandDir('../commands')
   .demandCommand()
   .alias('help', 'h')
-  // .wrap(Yargs.terminalWidth() > 240 ? Yargs.terminalWidth() / 2 : 120)
+  .wrap(null)
   .parse();
