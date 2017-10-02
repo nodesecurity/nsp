@@ -35,7 +35,18 @@ exports.builder = {
   exceptions: {
     type: 'array',
     description: 'advisories to ignore while running this check',
-    default: []
+    default: [],
+    group: 'Project:'
+  },
+  org: {
+    description: 'nodesecurity organization your project is contained in',
+    implies: 'integration',
+    group: 'Project:'
+  },
+  integration: {
+    description: `your project's uuid`,
+    implies: 'org',
+    group: 'Project:'
   }
 };
 
@@ -65,7 +76,7 @@ exports.handler = Command.wrap('check', function (args) {
   let check;
   if (!args.offline) {
     const api = new API(args);
-    check = api.check({ package: pkg, shrinkwrap, packagelock, exceptions: args.exceptions });
+    check = api.check(args, { package: pkg, shrinkwrap, packagelock, exceptions: args.exceptions });
   }
   else {
     let advisories;
