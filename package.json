@@ -18,6 +18,9 @@
     "yargs": "^9.0.1"
   },
   "devDependencies": {},
+  "engines": { 
+    "node" : ">=6.0.0" 
+  },
   "keywords": [
     "security",
     "nsp",
