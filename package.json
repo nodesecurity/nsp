@@ -18,7 +18,7 @@
     "yargs": "^9.0.1"
   },
   "devDependencies": {
-    "boom": "^6.0.0",
+    "boom": "^5.2.0",
     "code": "^4.1.0",
     "eslint-config-nodesecurity": "^1.3.1",
     "hapi": "^16.6.2",
