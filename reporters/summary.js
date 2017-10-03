@@ -1,7 +1,7 @@
 'use strict';
 
-var Chalk = require('chalk');
-var Table = require('cli-table2');
+const Chalk = require('chalk');
+const Table = require('cli-table2');
 
 exports.error = function (err, args) {
 
@@ -42,7 +42,7 @@ exports.check.success = function (result, args) {
       middle: ' '
     }
   });
-  
+
   result.data.forEach((finding) => {
 
     table.push([

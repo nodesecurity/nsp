@@ -20,7 +20,7 @@ exports.builder = {
   }
 };
 
-exports.handler = Command.wrap('login', function (args) {
+exports.handler = Command.wrap('login', (args) => {
 
   let input = Promise.resolve();
   if (process.stdout.isTTY) {

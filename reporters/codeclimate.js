@@ -6,8 +6,8 @@ const Path = require('path');
 const internals = {};
 internals.findLines = function (shrinkwrap, mod, version) {
 
-  const modRE = new RegExp('\\s*\"' + mod + '\":\\s*\\{\\s*([^\\}]*)\\}', 'gm');
-  const versionRE = new RegExp('\\s*\"version\":\\s*\"' + version + '\"', 'gm');
+  const modRE = new RegExp(`\\s*\"${mod}\":\\s*\\{\\s*([^\\}]*)\\}`, 'gm');
+  const versionRE = new RegExp(`\\s*\"version\":\\s*\"${version}\"`, 'gm');
   let found = false;
 
   let match;
@@ -78,10 +78,10 @@ exports.check.success = function (result, args) {
       content.push(finding.references);
     }
 
-    console.log(JSON.stringify({
+    const row = JSON.stringify({
       type: 'issue',
-      check_name: 'Vulnerable module "' + finding.module + '" identified',
-      description: '`' + finding.module + '` ' + finding.title,
+      check_name: `Vulnerable module "${finding.module}" identified`,
+      description: `\`${finding.module}\` ${finding.title}`,
       categories: ['Security'],
       remediation_points: 300000,
       content: {
@@ -94,6 +94,8 @@ exports.check.success = function (result, args) {
           end: lines.end
         }
       }
-    }) + '\0');
+    });
+
+    console.log(`${row}\0`);
   });
 };

@@ -50,13 +50,13 @@ exports.builder = {
     group: 'Project:'
   },
   integration: {
-    description: `your project's uuid`,
+    description: 'your project\'s uuid',
     implies: 'org',
     group: 'Project:'
   }
 };
 
-exports.handler = Command.wrap('check', function (args) {
+exports.handler = Command.wrap('check', (args) => {
 
   let pkg;
   try {

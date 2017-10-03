@@ -29,9 +29,9 @@ exports.builder = {
   }
 };
 
-exports.handler = Command.wrap('gather', function (args) {
+exports.handler = Command.wrap('gather', (args) => {
 
-  let path = args.path.endsWith('advisories.json') ? args.path : Path.join(args.path, 'advisories.json');
+  const path = args.path.endsWith('advisories.json') ? args.path : Path.join(args.path, 'advisories.json');
 
   return internals.fetch(args.baseUrl).then((items) => {
 
