@@ -22,6 +22,7 @@ exports.builder = {
 
 exports.handler = Command.wrap('login', (args) => {
 
+  // $lab:coverage:off$
   let input = Promise.resolve();
   if (process.stdout.isTTY) {
     if (!args.email) {
@@ -58,6 +59,7 @@ exports.handler = Command.wrap('login', (args) => {
       return Promise.reject(new Error('Email and password required for non-interactive logins'));
     }
   }
+  // $lab:coverage:on$
 
   return input.then(() => {
 

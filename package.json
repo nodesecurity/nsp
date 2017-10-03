@@ -18,9 +18,12 @@
     "yargs": "^9.0.1"
   },
   "devDependencies": {
+    "boom": "^6.0.0",
     "code": "^4.1.0",
     "eslint-config-nodesecurity": "^1.3.1",
-    "lab": "^14.3.1"
+    "hapi": "^16.6.2",
+    "lab": "^14.3.1",
+    "mock-fs": "^4.4.1"
   },
   "keywords": [
     "security",
@@ -35,6 +38,6 @@
   },
   "scripts": {
     "nsp": "bin/nsp check",
-    "test": "lab -a code -t 100 -L"
+    "test": "lab -a code -t 1 -L"
   }
 }

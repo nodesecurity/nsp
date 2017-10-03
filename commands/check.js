@@ -1,5 +1,6 @@
 'use strict';
 
+const Fs = require('fs');
 const Path = require('path');
 
 const API = require('../lib/api');
@@ -60,7 +61,7 @@ exports.handler = Command.wrap('check', (args) => {
 
   let pkg;
   try {
-    pkg = require(Path.join(args.path, 'package.json'));
+    pkg = JSON.parse(Fs.readFileSync(Path.join(args.path, 'package.json')));
   }
   catch (err) {
     return Promise.reject(new Error(`Unable to load package.json for project: ${Path.basename(args.path)}`));
@@ -69,13 +70,13 @@ exports.handler = Command.wrap('check', (args) => {
 
   let shrinkwrap;
   try {
-    shrinkwrap = require(Path.join(args.path, 'npm-shrinkwrap.json'));
+    shrinkwrap = JSON.parse(Fs.readFileSync(Path.join(args.path, 'npm-shrinkwrap.json')));
   }
   catch (err) {}
 
   let packagelock;
   try {
-    packagelock = require(Path.join(args.path, 'package-lock.json'));
+    packagelock = JSON.parse(Fs.readFileSync(Path.join(args.path, 'package-lock.json')));
   }
   catch (err) {}
 
@@ -88,10 +89,10 @@ exports.handler = Command.wrap('check', (args) => {
     let advisories;
     try {
       if (args.advisories) {
-        advisories = require(Path.resolve(process.cwd(), args.advisories));
+        advisories = JSON.parse(Fs.readFileSync(Path.resolve(process.cwd(), args.advisories)));
       }
       else {
-        advisories = require(Path.join(__dirname, '..', 'advisories.json'));
+        advisories = JSON.parse(Fs.readFileSync(Path.join(args.path, 'advisories.json')));
       }
     }
     catch (err) {
