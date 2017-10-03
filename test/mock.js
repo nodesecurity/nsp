@@ -40,7 +40,7 @@ exports.resetLog = function () {
 exports.api = function () {
 
   const server = new Hapi.Server();
-  server.connection();
+  server.connection({ host: 'localhost' });
 
   server.route({
     method: 'POST',
