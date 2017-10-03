@@ -25,6 +25,9 @@
     "lab": "^14.3.1",
     "mock-fs": "^4.4.1"
   },
+  "engines": { 
+    "node" : ">=6.0.0" 
+  },
   "keywords": [
     "security",
     "nsp",

@@ -96,7 +96,7 @@ exports.handler = Command.wrap('check', (args) => {
       }
     }
     catch (err) {
-      return Promise.reject(new Error('Unable to load local advisories database'));
+      return Promise.reject(new Error('Unable to load local advisories database - run \'nsp gather\''));
     }
 
     check = Offline.check({ package: pkg, shrinkwrap, packagelock, advisories, exceptions: args.exceptions });
