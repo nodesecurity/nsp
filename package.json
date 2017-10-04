@@ -28,6 +28,16 @@
   "engines": {
     "node": ">=6.0.0"
   },
+  "files": [
+    "bin",
+    "commands",
+    "lib",
+    "reporters",
+    "package.json",
+    "npm-shrinkwrap.json",
+    "README.md",
+    "LICENSE"
+  ],
   "keywords": [
     "security",
     "nsp",
