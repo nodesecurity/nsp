@@ -35,7 +35,25 @@ Please note that in case of naming conflicts built-in reporters (as listed above
 
 The Node Security CLI supports adding exceptions. These are advisories that you have evaluated and personally deemed unimportant for your project.
 
-In order to leverage this capability, create a `.nsprc` file in the root of your project with content like the following:
+There are two ways to leverage this capability, online or offline. To use online exceptions, register your project on [our online portal](https://nodesecurity.io). From there you can manage your exceptions from a central location.
+
+In order to inform the CLI tool that it should use these settings, you'll have to create a settings file (and login if your project is private). You'll need both the organization name and the UUID for your project, these can be
+retrieved from the URL from our portal. For example, if your project is [hapi](https://github.com/hapijs/hapi) and your project URL is https://nodesecurity.io/orgs/hapi/projects/2a6e5642-b7a1-4b93-b8fb-21c1a5043f42 then your
+organization name is `hapi` and your project UUID is `2a6e5642-b7a1-4b93-b8fb-21c1a5043f42`.
+
+Using that information, create a `.nsprc` file with the following content:
+
+```js
+{
+  "org": "hapi",
+  "integration": "2a6e5642-b7a1-4b93-b8fb-21c1a5043f42"
+}
+```
+
+When you next run `nsp check` your exceptions will be retrieved from online. If your project is a private one, you will additionally need to run `npm login` which will create another `.nsprc` file in your home directory with an
+authentication token that will allow the CLI tool to look up your settings.
+
+For offline exceptions, create a `.nsprc` file in the root of your project with content like the following:
 
 ```js
 {
@@ -51,21 +69,7 @@ Be careful using this feature. If you add code later that is impacted by an excl
 
 ## Proxy Support
 
-The Node Security CLI has proxy support by using [proxy-agent](https://www.npmjs.com/package/proxy-agent).
-
-The currently implemented protocol mappings are listed in the table below:
-
-
-| Protocol   | Example
-|:----------:|:--------:
-| `http`     | `http://proxy-server-over-tcp.com:3128`
-| `https`    | `https://proxy-server-over-tls.com:3129`
-| `socks(v5)`| `socks://username:password@some-socks-proxy.com:9050` (username & password are optional)
-| `socks5`   | `socks5://username:password@some-socks-proxy.com:9050` (username & password are optional)
-| `socks4`   | `socks4://some-socks-proxy.com:9050`
-| `pac`      | `pac+http://www.example.com/proxy.pac`
-
-
+The Node Security CLI has proxy support by using [https-proxy-agent](https://www.npmjs.com/package/https-proxy-agent).
 
 To configure the proxy set the proxy key in your `.nsprc` file. This can be put in the root of your project or in your home directory.
 
@@ -74,6 +78,8 @@ To configure the proxy set the proxy key in your `.nsprc` file. This can be put 
     "proxy": "http://127.0.0.1:8080"
 }
 ```
+
+The CLI tool will also automatically detect your proxy if it is exported to the environment as `HTTP_PROXY` or `HTTPS_PROXY`.
 
 ## Offline mode
 

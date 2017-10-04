@@ -24,7 +24,7 @@ Yargs
   .option('baseUrl')
   .option('proxy', {
     description: 'https proxy to be used for API calls',
-    default: process.env.https_proxy || process.env.HTTPS_PROXY,
+    default: process.env.https_proxy || process.env.HTTPS_PROXY || process.env.http_proxy || process.env.HTTP_PROXY,
     group: 'Connection:'
   })
   .option('reporter', {
