@@ -3,7 +3,6 @@ pipeline:
     image: node:${NODE_VERSION}
     commands:
       - npm install
-      - npm run lint
       - npm test
   slack:
     image: plugins/slack
