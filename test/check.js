@@ -28,6 +28,12 @@ describe('check handler', { parallel: false }, () => {
           dependencies: {}
         })
       },
+      '/missing_name': {
+        'package.json': JSON.stringify({
+          version: '1.0.0',
+          dependencies: {}
+        })
+      },
       '/single': {
         'package.json': JSON.stringify({
           name: 'single_finding',
@@ -176,6 +182,25 @@ describe('check handler', { parallel: false }, () => {
       quiet: true,
       offline: true,
       exceptions: []
+    }).then(() => {
+
+      expect(exited).to.equal(true);
+    });
+  });
+
+  it('can run a check when package.json is missing name field', () => {
+
+    let exited = false;
+    Mock.exit((code) => {
+
+      expect(code).to.equal(0);
+      exited = true;
+    });
+
+    return Check.handler({
+      path: '/missing_name',
+      quiet: true,
+      baseUrl: server.info.uri
     }).then(() => {
 
       expect(exited).to.equal(true);

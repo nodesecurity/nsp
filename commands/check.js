@@ -80,6 +80,22 @@ exports.handler = Command.wrap('check', (args) => {
   }
   catch (err) {}
 
+  if (!pkg.name) {
+    pkg.name = Path.basename(args.path);
+  }
+
+  if (shrinkwrap &&
+      !shrinkwrap.name) {
+
+    shrinkwrap.name = pkg.name;
+  }
+
+  if (packagelock &&
+      !packagelock.name) {
+
+    packagelock.name = pkg.name;
+  }
+
   let check;
   if (!args.offline) {
     const api = new API(args);

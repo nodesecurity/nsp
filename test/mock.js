@@ -64,7 +64,9 @@ exports.api = function () {
     path: '/check',
     handler: function (request, reply) {
 
-      if (request.payload.package.name === 'clean_package') {
+      if (request.payload.package.name === 'clean_package' ||
+          request.payload.package.name === 'missing_name') {
+
         return reply([]);
       }
 
