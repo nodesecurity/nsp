@@ -32,6 +32,10 @@ Yargs
     default: 'table',
     group: 'Output:'
   })
+  .option('preprocessor', {
+    description: 'project preprocessor',
+    group: 'Input:'
+  })
   .option('verbose', {
     description: 'provide more verbose output',
     boolean: true,

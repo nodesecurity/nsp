@@ -59,26 +59,10 @@ exports.builder = {
 
 exports.handler = Command.wrap('check', (args) => {
 
-  let pkg;
-  try {
-    pkg = JSON.parse(Fs.readFileSync(Path.join(args.path, 'package.json')));
-  }
-  catch (err) {
-    return Promise.reject(new Error(`Unable to load package.json for project: ${Path.basename(args.path)}`));
-  }
+  let pkg = args.pkg;
+  const { shrinkwrap, packagelock } = args;
+
   pkg = Package.sanitize(pkg);
-
-  let shrinkwrap;
-  try {
-    shrinkwrap = JSON.parse(Fs.readFileSync(Path.join(args.path, 'npm-shrinkwrap.json')));
-  }
-  catch (err) {}
-
-  let packagelock;
-  try {
-    packagelock = JSON.parse(Fs.readFileSync(Path.join(args.path, 'package-lock.json')));
-  }
-  catch (err) {}
 
   if (!pkg.name) {
     pkg.name = Path.basename(args.path);

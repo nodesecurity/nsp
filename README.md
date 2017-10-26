@@ -31,6 +31,34 @@ $ nsp check --reporter checkstyle
 ```
 Please note that in case of naming conflicts built-in reporters (as listed above) take precedence. For instance, `nsp-reporter-json` would never be used since nsp ships with a `json` formatter.
 
+## Input Preprocessors
+
+You may also alter a project's `package.json`, `npm-shrinkwrap.json` and/or `package-lock.json` by using an input preprocessor.
+
+The default, built in, preprocessor simply reads these files and returns their JSON parsed content as-is. You can use a third party preprocessor like so: `nsp check --preprocessor example` which, much like third party reporters
+would attempt to require the module `nsp-preprocessor-example`. If the given preprocessor is not found, the default will be used.
+
+### Creating a preprocessor
+
+A custom preprocessor should be a module named with the prefix `nsp-preprocessor-`. It must export an object where each property is the name of a command executable by the `nsp` script. The value of each of these properties must
+be a function that accepts a single argument `args` which represents the command line arguments passed at execution time, it must return a promise modifying or extending the `args` object.
+
+
+Example:
+```js
+module.exports = {
+  check: function (args) {
+
+    // do something to read or generate package.json, npm-shrinkwrap.json and package-lock.json
+    // the path to the project can be found as `args.path`
+    // `pkg` must be the JSON parsed contents of package.json
+    // `shrinkwrap` must be the JSON parsed contents of npm-shrinkwrap.json, if it exists. this may be left out.
+    // `packagelock` must be the JSON parsed contents of package-lock.json, if it exists. this may also be left out.
+    return Object.assign(args, { pkg, shrinkwrap, packagelock });
+  }
+};
+```
+
 ## Exceptions
 
 The Node Security CLI supports adding exceptions. These are advisories that you have evaluated and personally deemed unimportant for your project.
