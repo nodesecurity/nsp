@@ -20,7 +20,7 @@ var workingOptions = {
 
 var Findings = require('./data/findings.json');
 
-var exceptions = ['https://nodesecurity.io/advisories/39', 'https://nodesecurity.io/advisories/9000'];
+var exceptions = ['https://nodesecurity.io/advisories/39', 'https://nodesecurity.io/advisories/9000', '39'];
 
 describe('check', function () {
 
