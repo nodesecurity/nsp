@@ -12,6 +12,22 @@ Node Security helps you keep your node applications secure. With Node Security y
 * To install the Node Security command line tool: `npm install -g nsp`
 * Then run `nsp --help` to find out more.
 
+## Filter and threshold
+
+The results of the `check` command may be altered based on either a `filter`, which completely hides vulnerabilities below the given CVSS
+score, or a `threshold` which continues to display all vulnerabilities but will not exit with a code of `1` unless at least one is above the
+given CVSS score.
+
+## Exit codes
+
+The CLI tool exits with the following codes to signify state
+
+- 0: command ran with success
+- 1: command run was 'check', was successful, but returned vulnerabilities outside of the threshold or filter
+- 2: command received a server error (5xx)
+- 3: unknown error
+- 4: there was an error in the output reporter
+
 ## Output Reporters
 
 You can adjust how the client outputs findings by specifying one of the following built in reporters:
@@ -30,6 +46,39 @@ $ npm install -g nsp nsp-reporter-checkstyle
 $ nsp check --reporter checkstyle
 ```
 Please note that in case of naming conflicts built-in reporters (as listed above) take precedence. For instance, `nsp-reporter-json` would never be used since nsp ships with a `json` formatter.
+
+### Creating a reporter
+
+A custom reporter should be a module named with the prefix `nsp-reporter-`, it must export two functions at minimum `error` and `success`.
+
+The `error` function accepts two arguments, `(err, args)` where `err` is an `Error` object representing the failure that occurred during whatever command may have been run, and `args` is an object representing all of the
+command line arguments that were passed to the CLI at run time.
+
+The `success` function also accepts two arguments `(result, args)` where `args` is the same CLI arguments and `result` is an object with these three properties:
+
+- `message`: a string summary of the command's result
+- `data`: the actual result of the command, the shape of this parameter varies for each command
+- `meta`: detailed information from behind the scenes (response headers, etc)
+
+In addition to the top level `success` and `error` functions, specific handlers may be specified for each command that the CLI tool handles. For example
+
+```js
+exports.error = function (err, args) {
+  // run for all failures of any command
+};
+
+exports.success = function (result, args) {
+  // run for success of any command _except_ for 'check'
+};
+
+exports.check = {};
+exports.check.success = function (result, args) {
+  // run for success of _only_ the 'check' command
+};
+```
+
+Any of these functions may return a Promise if they perform any asynchronous actions to guarantee that they complete before the process exits. If the returned Promise rejects, the `error` handler will also be called with the
+result of the rejected Promise.
 
 ## Input Preprocessors
 
