@@ -14,9 +14,10 @@ Node Security helps you keep your node applications secure. With Node Security y
 
 ## Filter and threshold
 
-The results of the `check` command may be altered based on either a `filter`, which completely hides vulnerabilities below the given CVSS
-score, or a `threshold` which continues to display all vulnerabilities but will not exit with a code of `1` unless at least one is above the
-given CVSS score.
+The results of the `check` command may be altered based on either a `filter` or `threshold`.
+
+- `--filter`: hide all vulnerabilities below the given CVSS score
+- `--threshold`: display all vulnerabilities, but only exit with an error code if at least one finding has a CVSS score above the given value
 
 ## Exit codes
 
