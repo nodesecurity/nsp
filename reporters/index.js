@@ -11,8 +11,11 @@ const loadInternalReporter = function (name) {
 };
 
 const loadExternalReporter = function (name) {
-
   try {
+    if(name.includes('@')) {
+      return require(`${name}`);
+    }
+  
     return require(`nsp-reporter-${name}`);
   }
   catch (err) {}
