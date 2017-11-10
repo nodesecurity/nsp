@@ -46,6 +46,11 @@ Additionally, you can use [third-party reporter](https://www.npmjs.com/search?q=
 $ npm install -g nsp nsp-reporter-checkstyle
 $ nsp check --reporter checkstyle
 ```
+Scope reporters must be referenced by full name:
+```bash
+$ nsp check --reporter @scope/nps-reporter-checkstyle
+```
+
 Please note that in case of naming conflicts built-in reporters (as listed above) take precedence. For instance, `nsp-reporter-json` would never be used since nsp ships with a `json` formatter.
 
 ### Creating a reporter
