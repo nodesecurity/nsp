@@ -106,19 +106,11 @@ describe('check handler', { parallel: false }, () => {
 
   afterEach(() => {
 
-    Mock.resetExit();
     MockFs.restore();
     return server.stop();
   });
 
   it('can run a clean check', () => {
-
-    let exited = false;
-    Mock.exit((code) => {
-
-      expect(code).to.equal(0);
-      exited = true;
-    });
 
     return Check.handler({
       path: '/clean',
@@ -126,18 +118,11 @@ describe('check handler', { parallel: false }, () => {
       baseUrl: server.info.uri
     }).then(() => {
 
-      expect(exited).to.equal(true);
+      expect(process.exitCode).to.equal(0);
     });
   });
 
   it('can run a check with one finding', () => {
-
-    let exited = false;
-    Mock.exit((code) => {
-
-      expect(code).to.equal(1);
-      exited = true;
-    });
 
     return Check.handler({
       path: '/single',
@@ -145,18 +130,11 @@ describe('check handler', { parallel: false }, () => {
       baseUrl: server.info.uri
     }).then(() => {
 
-      expect(exited).to.equal(true);
+      expect(process.exitCode).to.equal(1);
     });
   });
 
   it('can run a check with multiple findings', () => {
-
-    let exited = false;
-    Mock.exit((code) => {
-
-      expect(code).to.equal(1);
-      exited = true;
-    });
 
     return Check.handler({
       path: '/multiple',
@@ -164,18 +142,11 @@ describe('check handler', { parallel: false }, () => {
       baseUrl: server.info.uri
     }).then(() => {
 
-      expect(exited).to.equal(true);
+      expect(process.exitCode).to.equal(1);
     });
   });
 
   it('can run an offline check', () => {
-
-    let exited = false;
-    Mock.exit((code) => {
-
-      expect(code).to.equal(1);
-      exited = true;
-    });
 
     return Check.handler({
       path: '/offline',
@@ -184,18 +155,11 @@ describe('check handler', { parallel: false }, () => {
       exceptions: []
     }).then(() => {
 
-      expect(exited).to.equal(true);
+      expect(process.exitCode).to.equal(1);
     });
   });
 
   it('can run a check when package.json is missing name field', () => {
-
-    let exited = false;
-    Mock.exit((code) => {
-
-      expect(code).to.equal(0);
-      exited = true;
-    });
 
     return Check.handler({
       path: '/missing_name',
@@ -203,18 +167,11 @@ describe('check handler', { parallel: false }, () => {
       baseUrl: server.info.uri
     }).then(() => {
 
-      expect(exited).to.equal(true);
+      expect(process.exitCode).to.equal(0);
     });
   });
 
   it('exits with status 3 when package.json is invalid', () => {
-
-    let exited = false;
-    Mock.exit((code) => {
-
-      expect(code).to.equal(3);
-      exited = true;
-    });
 
     return Check.handler({
       path: '/broken',
@@ -222,7 +179,7 @@ describe('check handler', { parallel: false }, () => {
       baseUrl: server.info.uri
     }).then(() => {
 
-      expect(exited).to.equal(true);
+      expect(process.exitCode).to.equal(3);
     });
   });
 });
