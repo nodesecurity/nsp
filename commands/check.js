@@ -60,7 +60,8 @@ exports.builder = {
 exports.handler = Command.wrap('check', (args) => {
 
   let pkg = args.pkg;
-  const { shrinkwrap, packagelock } = args;
+  const shrinkwrap = args.shrinkwrap;
+  const packagelock = args.packagelock;
 
   pkg = Package.sanitize(pkg);
 
