@@ -1,4 +1,4 @@
-# nsp [![Build Status](https://drone.andyet.com/api/badges/nodesecurity/nsp/status.svg)](https://drone.andyet.com/nodesecurity/nsp)
+# nsp [![Build Status](https://build.andyet.com/api/badges/nodesecurity/nsp/status.svg)](https://build.andyet.com/nodesecurity/nsp)
 
 ## About Node Security
 
