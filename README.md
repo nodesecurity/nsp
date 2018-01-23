@@ -90,11 +90,21 @@ would attempt to require the module `nsp-preprocessor-example`. If the given pre
 
 ### Creating a preprocessor
 
-A custom preprocessor should be a module named with the prefix `nsp-preprocessor-`. It must export an object where each property is the name of a command executable by the `nsp` script. The value of each of these properties must
+A custom preprocessor should be a NPM module named with the prefix `nsp-preprocessor-` or a local file. It must export an object where each property is the name of a command executable by the `nsp` script. The value of each of these properties must
 be a function that accepts a single argument `args` which represents the command line arguments passed at execution time, it must return a promise modifying or extending the `args` object.
 
+Example Usage - NPM module named ```nsp-preprocessor-example```
+```
+nsp check --preprocessor example
+```
 
-Example:
+Example Usage - local preprocessor in your code directory as ```./example-preprocessor.js```
+```
+nsp check --preprocessor ./example-preprocessor.js
+```
+
+
+Example Preprocessor:
 ```js
 module.exports = {
   check: function (args) {
