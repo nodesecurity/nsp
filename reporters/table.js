@@ -27,7 +27,7 @@ exports.check.success = function (result) {
 
     const table = new Table({
       head: ['', finding.title],
-      colWidths: [12, 68],
+      colWidths: [12, 65],
       wordWrap: true
     });
 
