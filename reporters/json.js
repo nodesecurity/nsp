@@ -1,11 +1,11 @@
 'use strict';
 
-exports.error = function (err, args) {
+exports.error = function (err, args, logger = console) {
 
-  console.error(JSON.stringify(args.verbose ? err : { error: err.message }));
+  logger.error(JSON.stringify(args.verbose ? err : { error: err.message }));
 };
 
-exports.success = function (result, args) {
+exports.success = function (result, args, logger = console) {
 
-  console.log(JSON.stringify(args.verbose ? result : result.data));
+  logger.log(JSON.stringify(args.verbose ? result : result.data));
 };

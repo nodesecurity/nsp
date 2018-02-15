@@ -3,24 +3,24 @@
 const Chalk = require('chalk');
 const Table = require('cli-table2');
 
-exports.error = function (err, args) {
+exports.error = function (err, args, logger = console) {
 
-  console.error(Chalk.yellow('(+)'), err.message);
+  logger.error(Chalk.yellow('(+)'), err.message);
 };
 
-exports.success = function (result, args) {
+exports.success = function (result, args, logger = console) {
 
-  console.log(Chalk.green('(+)'), result.message);
+  logger.log(Chalk.green('(+)'), result.message);
 };
 
 exports.check = {};
-exports.check.success = function (result, args) {
+exports.check.success = function (result, args, logger = console) {
 
   if (!result.data.length) {
-    return console.log(Chalk.green('(+)'), result.message);
+    return logger.log(Chalk.green('(+)'), result.message);
   }
 
-  console.log(Chalk.red('(+)'), result.message);
+  logger.log(Chalk.red('(+)'), result.message);
 
   const table = new Table({
     head: ['Name', 'Installed', 'Patched', 'Path', 'More Info'],
@@ -54,6 +54,6 @@ exports.check.success = function (result, args) {
     ]);
   });
 
-  console.log(table.toString());
-  console.log();
+  logger.log(table.toString());
+  logger.log();
 };

@@ -4,24 +4,24 @@ const Chalk = require('chalk');
 const Table = require('cli-table2');
 const Cvss = require('cvss');
 
-exports.error = function (err) {
+exports.error = function (err, args, logger = console) {
 
-  console.error(Chalk.yellow('(+)'), err.message);
+  logger.error(Chalk.yellow('(+)'), err.message);
 };
 
-exports.success = function (result) {
+exports.success = function (result, args, logger = console) {
 
-  console.log(Chalk.green('(+)'), result.message);
+  logger.log(Chalk.green('(+)'), result.message);
 };
 
 exports.check = {};
-exports.check.success = function (result) {
+exports.check.success = function (result, args, logger = console) {
 
   if (!result.data.length) {
-    return console.log(Chalk.green('(+)'), result.message);
+    return logger.log(Chalk.green('(+)'), result.message);
   }
 
-  console.log(Chalk.red('(+)'), result.message);
+  logger.log(Chalk.red('(+)'), result.message);
 
   result.data.forEach((finding) => {
 
@@ -39,7 +39,7 @@ exports.check.success = function (result) {
     table.push(['Path', finding.path.join(' > ')]);
     table.push(['More Info', finding.advisory]);
 
-    console.log(table.toString());
-    console.log();
+    logger.log(table.toString());
+    logger.log();
   });
 };

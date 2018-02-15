@@ -28,16 +28,16 @@ internals.findLines = function (shrinkwrap, mod, version) {
   };
 };
 
-exports.error = function (err, args) {
+exports.error = function (err, args, logger = console) {
 
-  console.error(err.stack);
+  logger.error(err.stack);
 };
 
-exports.success = function (result, args) {
+exports.success = function (result, args, logger = console) {
 };
 
 exports.check = {};
-exports.check.success = function (result, args) {
+exports.check.success = function (result, args, logger = console) {
 
   if (!result.data.length) {
     return;
@@ -96,6 +96,6 @@ exports.check.success = function (result, args) {
       }
     });
 
-    console.log(`${row}\0`);
+    logger.log(`${row}\0`);
   });
 };
