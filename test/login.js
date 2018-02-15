@@ -1,12 +1,10 @@
 'use strict';
 
 const Login = require('../commands/login');
+const Config = require('../lib/config');
 
-const Fs = require('fs');
 const Mock = require('./mock');
 const MockFs = require('mock-fs');
-const Os = require('os');
-const Path = require('path');
 
 const Code = require('code');
 const Lab = require('lab');
@@ -48,7 +46,7 @@ describe('login handler', () => {
     }).then(() => {
 
       expect(exited).to.equal(true);
-      const config = JSON.parse(Fs.readFileSync(Path.join(Os.homedir(), '.nsprc')));
+      const config = Config.read();
       expect(config).to.be.an.object();
       expect(config.token).to.equal('thisisafaketoken');
     });

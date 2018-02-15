@@ -143,7 +143,7 @@ The URLs used in the array should match the advisory link that the CLI reports. 
 
 Be careful using this feature. If you add code later that is impacted by an excluded advisory, Node Security has no way of knowing. Keep a careful eye on your exceptions.
 
-`.nsprc` is read using [rc](https://github.com/dominictarr/rc), so it supports comments using [json-strip-comments](https://github.com/sindresorhus/strip-json-comments).
+`.nsprc` is read using [strip-json-comments](https://github.com/sindresorhus/strip-json-comments), so comment away.
 
 ## Proxy Support
 
