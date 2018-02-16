@@ -3,24 +3,6 @@
 const Boom = require('boom');
 const Hapi = require('hapi');
 
-process._exit = process.exit;
-
-exports.exit = function (fn) {
-
-  process.exit = function (code) {
-
-    try {
-      fn(code);
-    }
-    catch (err) {}
-  };
-};
-
-exports.resetExit = function () {
-
-  process.exit = process._exit;
-};
-
 exports.log = function (state) {
 
   console._log = console.log;

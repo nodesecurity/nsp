@@ -26,19 +26,11 @@ describe('login handler', () => {
 
   afterEach(() => {
 
-    Mock.resetExit();
     MockFs.restore();
     return server.stop();
   });
 
   it('saves token when login succeeds', () => {
-
-    let exited = false;
-    Mock.exit((code) => {
-
-      expect(code).to.equal(0);
-      exited = true;
-    });
 
     return Login.handler({
       email: 'test@user.com',
@@ -47,7 +39,7 @@ describe('login handler', () => {
       baseUrl: server.info.uri
     }).then(() => {
 
-      expect(exited).to.equal(true);
+      expect(process.exitCode).to.equal(0);
       const config = JSON.parse(Fs.readFileSync(Path.join(Os.homedir(), '.nsprc')));
       expect(config).to.be.an.object();
       expect(config.token).to.equal('thisisafaketoken');
@@ -56,13 +48,6 @@ describe('login handler', () => {
 
   it('exits with error when login fails', () => {
 
-    let exited = false;
-    Mock.exit((code) => {
-
-      expect(code).to.equal(3);
-      exited = true;
-    });
-
     return Login.handler({
       email: 'wrong@user.com',
       password: 'shouldfail',
@@ -70,7 +55,7 @@ describe('login handler', () => {
       baseUrl: server.info.uri
     }).then(() => {
 
-      expect(exited).to.equal(true);
+      expect(process.exitCode).to.equal(3);
     });
   });
 });
