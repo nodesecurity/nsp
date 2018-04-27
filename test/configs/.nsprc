@@ -1,0 +1,5 @@
+{
+  // comment line
+  "key": "value",
+  "array": [] /* block comment */
+}
