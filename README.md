@@ -1,11 +1,11 @@
-# The Node Security Platform has been acquired by npm, Inc.
-# On April 10, 2018, the Node Security Platform joined npm, Inc., which operates the npm JavaScript package registry. 
+## The Node Security Platform has been acquired by npm, Inc.
+## On April 10, 2018, the Node Security Platform joined npm, Inc., which operates the npm JavaScript package registry. 
 
-# [Learn more here.](https://medium.com/npm-inc/npm-acquires-lift-security-258e257ef639)
+## [Learn more here.](https://medium.com/npm-inc/npm-acquires-lift-security-258e257ef639)
 
-# This service remains operational for current users in its current state. No new features or fixes will be implemented.
+## This service remains operational for current users in its current state. No new features or fixes will be implemented.
 
-# [Watch the npm blog for further updates](https://blog.npmjs.org)
+## [Watch the npm blog for further updates](https://blog.npmjs.org)
 
 ## About Node Security
 
