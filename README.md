@@ -5,7 +5,7 @@
 
 ## This service remains operational for current users in its current state. No new features or fixes will be implemented.
 
-## [Watch the npm blog for further updates](https://blog.npmjs.org)
+## Follow [@npmjs](https://twitter.com/npmjs) on Twitter for updates.
 
 ## About Node Security
 
